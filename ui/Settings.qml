@@ -11,7 +11,7 @@ Item {
             width: parent.width
             height: 30
 
-            Text { 
+            Text {
                 text: url
                 color: "white"
                 anchors {
@@ -57,7 +57,7 @@ Item {
                     bottomMargin: 5
                 }
                 Rectangle {
-                    color: white
+                    color: "white"
                     anchors.fill: parent
                 }
             }
@@ -75,10 +75,31 @@ Item {
         id: feedModel
         
         ListElement {
-            url: "http://xkcd.com/rss.xml"
+            url: "http://hazsci.thecomicseries.com/rss/" // Ok
         }
         ListElement {
-            url: "http://feeds.dilbert.com/DilbertMostPopular?format=xml"
+            url: "http://feeds.dilbert.com/DilbertMostPopular?format=xml" // Ok
+        }
+        ListElement {
+            url: "http://www.darthsanddroids.net/rss_noannotation.xml" // Ok
+        }
+        ListElement {
+            url: "http://www.irregularwebcomic.net/rss2.xml" // Ok
+        }
+        ListElement {
+            url: "http://xkcd.com/rss.xml" // Ok
+        }
+        ListElement {
+            url: "http://tmi-comic.com/feed/" // Ugly
+        }
+        ListElement {
+            url: "http://feeds.feedburner.com/wondermark" // Doing
+        }
+        ListElement {
+            url: "http://feeds.feedburner.com/JaysHindsight" // TODO this feed has some images which can't be opened due to unsafe connections
+        }
+        ListElement {
+            url: "http://www.questionablecontent.net/QCRSS.xml" // TODO this feed has more than one image per feed entry and the comic is not the first.
         }
     }
 
