@@ -14,7 +14,7 @@ Item {
         source: "images/background.png"
         anchors.fill: parent
     }
-    
+
     /* Canvas to place comics images */
     ComicCanvas {
         id: canvas
@@ -37,7 +37,7 @@ Item {
             window.state = "fullscreen"
         }
     }
-    
+
     ComicView {
         id: fullscreen
         
@@ -46,7 +46,7 @@ Item {
             window.state = "normalView"
         }
     }
-    
+
     Settings {
         id: settings
         
@@ -63,7 +63,7 @@ Item {
             right: controls.left
         }
     }
-    
+
     Image {
         id: logo
         
@@ -158,6 +158,7 @@ Item {
             }
         }
     }
+    
     states: [
         State {
             name: "fullscreen"
