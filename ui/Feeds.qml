@@ -64,11 +64,7 @@ ListModel {
         doc.open("GET", url)
         doc.send()
     }
-<<<<<<< HEAD
     
-=======
-
->>>>>>> a07171cbcf3f4e5b139e3279be8cdcf32df6924c
     function addFeed(url) {
         var db = openDatabaseSync("feed", "1.0", "Comics Feeds SQL", 1000000, "QSQLITE")
         function _addFeed(feedInfo) {

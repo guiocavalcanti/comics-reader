@@ -5,94 +5,6 @@ Item {
 
     property string currentFeed: feedModel.get(0).url;
 
-    Component {
-        id: feedDelegate
-
-        Item {
-            width: parent.width
-            height: 50
-
-            Text {
-                text: url
-                color: "white"
-                anchors {
-                    left: parent.left
-                    leftMargin: 10
-                    right: btDelete.left
-                    rightMargin: 10
-                    verticalCenter: parent.verticalCenter
-                }
-                font {
-                    pointSize: 12
-                    family: "Arial"
-                    bold: true
-                }
-                
-            }
-
-            Item {
-                id: btDelete
-                width: 32; height: 32;
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                    right: parent.right
-                    rightMargin: 10
-                }
-
-                Image {
-                    id: trashImg
-                    source: "images/bt-trash.png"
-                }
-            }
-
-            Rectangle {
-                color: "white"
-                opacity: 0.1
-                anchors.fill: parent
-            }
-        }
-    }
-
-    ListModel {
-        id: feedModel
-        ListElement {
-            url: "http://feeds.feedburner.com/wondermark"
-        }
-        ListElement {
-            url: "http://www.rsspect.com/rss/qwantz.xml"
-        }
-        ListElement {
-            url: "http://www.arcamax.com/doonesbury/channelfeed"
-        }
-        ListElement {
-            url: "http://henrik.nyh.se/scrapers/cyanide_and_happiness.rss"
-        }
-        ListElement {
-            url: "http://hazsci.thecomicseries.com/rss/"
-        }
-        ListElement {
-            url: "http://feeds.dilbert.com/DilbertMostPopular?format=xml" 
-        }
-        ListElement {
-            url: "http://www.darthsanddroids.net/rss_noannotation.xml"
-        }
-        ListElement {
-            url: "http://www.irregularwebcomic.net/rss2.xml"
-        }
-        ListElement {
-            url: "http://xkcd.com/rss.xml"
-        }
-        ListElement {
-            url: "http://tmi-comic.com/feed/" // Ugly
-        }
-        ListElement {
-            url: "http://feeds.feedburner.com/JaysHindsight" 
-            // TODO this feed has some images which can't be 
-            // opened due to unsafe connections
-        }
-
-    }
-
     Text {
         id: title
         text: "Settings"
@@ -149,25 +61,20 @@ Item {
         Button {
             id: btAddFeed
             label: "add"
-            mouseArea: addFeedMouseArea
             anchors {
                 top: parent.top
                 right: parent.right
             }
 
-            MouseArea {
-                id: addFeedMouseArea
-                anchors.fill: parent
-                onClicked: {
-                    if(input.acceptableInput){
-                        /*
-                        feedModel.append({
-                            "url" : feedInput.text, 
-                            "title" : "New Item"
-                        })
-                        */
-                        persistentFeed.addFeed(feedInput.text)
-                    }
+            onClicked: {
+                if(input.acceptableInput){
+                    /*
+                    feedModel.append({
+                        "url" : feedInput.text, 
+                        "title" : "New Item"
+                    })
+                    */
+                    persistentFeed.addFeed(feedInput.text)
                 }
             }
         }
@@ -177,7 +84,7 @@ Item {
         id: feedView
         clip: true
         model: Feeds { id: persistentFeed }
-        delegate: feedDelegate
+        delegate: FeedDelegate { id: feedDelegate }
         spacing: 5
         focus: true
         anchors {
