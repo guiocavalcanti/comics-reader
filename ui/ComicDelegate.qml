@@ -1,12 +1,11 @@
 import Qt 4.7
+import "feed.js" as Feed
 
 Item {
     id: delegate
 
-    RSS2Model {id: rssModel} // TODO import a .js module
-
-    property string image: rssModel.getImage(model)
-    property string alt: rssModel.getAlt(model)
+    property string image: Feed.getImage(model)
+    property string alt: Feed.getAlt(model)
     property string title: model.comicTitle
     property bool isValidComic: image != ""
     signal expand(int idx)

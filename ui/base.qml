@@ -1,4 +1,5 @@
 import Qt 4.7
+import "feed.js" as Feed
 
 Item {
     id: window
@@ -114,36 +115,11 @@ Item {
                 anchors.fill: parent
                 
                 onClicked: {
-                    var re = new RegExp("^http://xkcd.com/([0-9]*)/$")
-                    var match = re.exec(canvas.model.get(0).comicLink)
-                    var lastComicId = parseInt(match[1])
-                    var comicId = Math.floor(Math.random() * lastComicId) + 1
-                    var doc = new XMLHttpRequest(); // not the best solution
-                    doc.onreadystatechange = function() {
-                        if (doc.readyState == XMLHttpRequest.DONE) {
-                            var img = doc.responseText.match(
-                                "<img(.*)src=\"(http://imgs.xkcd.com/comics/[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&  ]*)\"([\"'\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&  ]*)/>")
-                            var src = img[2]
-                            var others = img[1] + img[3]
-                            var alt = others.match("alt=\"(.*)\"" )
-                            if (alt != null){
-                                alt = alt[1].split("\"")[0].replace("&#39;","'") // TODO find a better way to do this
-                            } else {
-                                alt = ""
-                            }
-                            var title = others.match("title=\"(.*)\"" )
-                            if (title != null){
-                                title = title[1].split("\"")[0].replace("&#39;","'") // TODO find a better way to do this
-                            } else {
-                                title = ""
-                            }
-                            fullscreen.currentImage = src
-                            fullscreen.currentAlt = title
-                            window.state = "fullscreen"
-                        }
-                    }
-                    doc.open("GET", "http://xkcd.com/" + comicId + "/")
-                    doc.send()
+                    Feed.randomXkcdFeed(function (src, alt) {
+                        fullscreen.currentImage = src
+                        fullscreen.currentAlt = alt
+                        window.state = "fullscreen"
+                    })
                 }
             }
         }

@@ -12,7 +12,7 @@ Item {
     
     XmlListModel {
         id: xkcdModel
-        namespaceDeclarations: "declare default element namespace 'http://www.w3.org/1999/xhtml';"
+        //namespaceDeclarations: "declare default element namespace 'http://www.w3.org/1999/xhtml'";
         source: "http://xkcd.com/" + xkcd.comicId + "/";
         
         query: "//div[@class='s']/img";
@@ -22,10 +22,11 @@ Item {
         XmlRole { name: "alt"; query: "@title/string()" }
         
         onStatusChanged: {
+            console.log("*********"+source)
             if (status == XmlListModel.Ready) {
-                xkcd.title = get(0).title;
-                xkcd.image = get(0).image;
-                xkcd.alt = get(0).alt;
+                xkcd.title = xkcdModel.get(0).title;
+                xkcd.image = xkcdModel.get(0).image;
+                xkcd.alt = xkcdModel.get(0).alt;
             }
         }
     }
