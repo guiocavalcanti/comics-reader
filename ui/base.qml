@@ -7,12 +7,24 @@ Item {
     
     property bool loading: canvas.delegate.status == XmlListModel.Loading
     property int lastComicId: 768;
-    
+
     Image {
         id: background
 
         source: "images/background.png"
         anchors.fill: parent
+    }
+
+    Image {
+        id: logo
+        
+        source: "images/logo.png"
+        anchors {
+            right: parent.right
+            rightMargin: 20
+            top: parent.top
+            topMargin: 15
+        }
     }
 
     /* Canvas to place comics images */
@@ -64,18 +76,6 @@ Item {
         }
     }
 
-    Image {
-        id: logo
-        
-        source: "images/logo.png"
-        anchors {
-            right: parent.right
-            rightMargin: 20
-            top: parent.top
-            topMargin: 15
-        }
-    }
-
     Column {
         id: controls
         
@@ -89,7 +89,7 @@ Item {
         Button {
             id: btFeeds
             
-            label: "feed"
+            label: "feeds"
             anchors.horizontalCenter: parent.horizontalCenter
             
             onClicked: {
@@ -154,6 +154,10 @@ Item {
             PropertyChanges { target: canvas; opacity: 0 }
             PropertyChanges { target: controls; opacity: 1 }
             PropertyChanges { target: settings; opacity: 1 }
+            PropertyChanges { target: btFeeds; label: "ok" }
+            PropertyChanges { target: btRandom; enabled: false }
+            PropertyChanges { target: btLeft; enabled: false }
+            PropertyChanges { target: btRight; enabled: false }
         }
     ]
 }

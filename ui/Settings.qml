@@ -84,7 +84,12 @@ Item {
         id: feedView
         clip: true
         model: Feeds { id: persistentFeed }
-        delegate: FeedDelegate { id: feedDelegate }
+        delegate: FeedDelegate {
+            id: feedDelegate
+            onDeletedFeed: {
+                persistentFeed.deleteFeed(index)
+            }
+        }
         spacing: 5
         focus: true
         anchors {

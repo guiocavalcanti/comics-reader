@@ -79,7 +79,7 @@ ListModel {
         feeds._validateFeed(url, _addFeed, invalidFeed);
     }
     
-    function removeFeed(index) {
+    function deleteFeed(index) {
         var db = openDatabaseSync("feed", "1.0", "Comics Feeds SQL", 1000000, "QSQLITE")
         db.transaction(function(tx) {
             var url = feeds.get(index).url

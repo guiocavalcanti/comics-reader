@@ -6,6 +6,7 @@ Item {
     property alias iconPressed: icon.sourcePressed
     property alias iconUnpressed: icon.sourceUnpressed
     property alias label: label.text
+    property alias enabled: mouseArea.enabled
     property bool pressed: false
     signal clicked
     
@@ -14,15 +15,25 @@ Item {
     Image {
         id: background
     
-        property bool pressed: false
-
+        property alias pressed: button.pressed
+        property alias enabled: button.enabled
+        
         source: "images/bt-normal.png"
         
         states: [
             State {
+                name: "disabled"
+                when: enabled == false
+                PropertyChanges {
+                    target: icon
+                    opacity: 0.3
+                }
+            },
+            
+            State {
                 name: "unpressed"
                 when: pressed == false
-                PropertyChanges { 
+                PropertyChanges {
                     target: background
                     source: "images/bt-normal.png" 
                 }
@@ -31,7 +42,7 @@ Item {
             State {
                 name: "pressed"
                 when: pressed == true
-                PropertyChanges { 
+                PropertyChanges {
                     target: background
                     source: "images/bt-pressed.png" 
                 }
