@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.6.1
+Type=Application
+Name=ComicsReader
+Exec=/usr/bin/comics-reader
+Icon=comics-reader
+X-Window-Icon=comics-reader
