@@ -24,7 +24,7 @@ install: build
 	install -D -m 644 $(CURDIR)/icons/hicolor/64x64/hildon/comics-reader.png $(CURDIR)/debian/comics-reader/usr/share/icons/hicolor/64x64/hildon/comics-reader.png
 	install -d $(CURDIR)/debian/comics-reader/opt/comics-reader/
 	install -d $(CURDIR)/debian/comics-reader/opt/comics-reader/images
-	install -D -m 644 $(CURDIR)/ui/*.qml $(CURDIR)/debian/comics-reader/opt/comics-reader/
+	install -D -m 644 $(CURDIR)/ui/{*.js,*.qml} $(CURDIR)/debian/comics-reader/opt/comics-reader/
 	install -D -m 644 $(CURDIR)/ui/images/* $(CURDIR)/debian/comics-reader/opt/comics-reader/images/
 
 binary-indep:
