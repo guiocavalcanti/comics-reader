@@ -1,3 +1,0 @@
-#!/bin/sh
-# run qml app with qml viewer
-/opt/qt4-maemo5/bin/qmlviewer /opt/comics-reader/baseN900.qml
