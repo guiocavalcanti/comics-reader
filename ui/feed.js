@@ -1,19 +1,19 @@
 
-function randomXkcdFeed(showComic) {
+function randomXkcdFeed(onShowComic) {
     var doc = new XMLHttpRequest(); // not the best solution
     doc.onreadystatechange = function() {
         if (doc.readyState == XMLHttpRequest.DONE) {
             var re = new RegExp("http://xkcd.com/([0-9]*)/")
             var match = re.exec(doc.responseText)
             var lastComicId = parseInt(match[1])
-            fetchRandomXkcdFeed(lastComicId, showComic)
+            fetchRandomXkcdFeed(lastComicId, onShowComic)
         }
     }
     doc.open("GET", "http://xkcd.com/rss.xml")
     doc.send()
 }
 
-function fetchRandomXkcdFeed(lastComicId, showComic) {
+function fetchRandomXkcdFeed(lastComicId, onShowComic) {
     var comicId = Math.floor(Math.random() * lastComicId) + 1
     var doc = new XMLHttpRequest();
     doc.onreadystatechange = function() {
@@ -24,19 +24,18 @@ function fetchRandomXkcdFeed(lastComicId, showComic) {
                 var src = img[2]
                 var others = img[1] + img[3]
                 var alt = others.match("alt=\"(.*)\"" )
-                if (alt != null){
+                if (alt != null)
                     alt = alt[1].split("\"")[0]
-                } else {
+                else
                     alt = ""
-                }
+
                 var title = others.match("title=\"(.*)\"" )
-                if (title != null){
+                if (title != null)
                     title = title[1].split("\"")[0]
-                } else {
+                else
                     title = ""
-                }
-                
-                showComic(src,title)
+
+                onShowComic(src,title)
             }
         }
     }
@@ -69,3 +68,4 @@ function getAlt(model) {
 function isValidComic(model) {
     return getImage(model) != ""
 }
+

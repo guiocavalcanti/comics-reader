@@ -4,13 +4,18 @@ ListView {
     id: comic
     property alias feed: rssModel.source;
     signal fullscreen;
-    
+
     clip: true
     flickableDirection: Flickable.HorizontalFlick
     snapMode: ListView.SnapToItem
     orientation: ListView.Horizontal
     model: RSS2Model {id: rssModel}
-    delegate: ComicDelegate {onExpand: {comic.currentIndex = idx; fullscreen(idx)}}
+    delegate: ComicDelegate { 
+        onExpand: {
+            comic.currentIndex = index
+            fullscreen(index)
+        }
+    }
     spacing: 10
 
     BusyIndicator {

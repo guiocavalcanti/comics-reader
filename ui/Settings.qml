@@ -67,13 +67,7 @@ Item {
             }
 
             onClicked: {
-                if(input.acceptableInput){
-                    /*
-                    feedModel.append({
-                        "url" : feedInput.text, 
-                        "title" : "New Item"
-                    })
-                    */
+                if(input.acceptableInput) {
                     persistentFeed.addFeed(feedInput.text)
                 }
             }
@@ -89,6 +83,9 @@ Item {
             onDeletedFeed: {
                 persistentFeed.deleteFeed(index)
             }
+            onSelectedFeed: {
+                feedView.currentIndex = index
+            }
         }
         spacing: 5
         focus: true
@@ -103,7 +100,7 @@ Item {
         highlight: Rectangle { 
             color: "lightsteelblue";
             width: parent.width
-            opacity: 0.5
+            opacity: 0.3
         }
         onCurrentItemChanged: {
             var index = feedView.currentIndex

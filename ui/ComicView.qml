@@ -7,12 +7,12 @@ Item{
     property string currentAlt
     property int borderSize: 40;
     signal doubleClicked;
-    
+
     anchors.fill: parent
-    
+
     Rectangle {
         id: blackout
-        
+
         color: "black"
         anchors.fill: parent
     }
@@ -21,13 +21,13 @@ Item{
         anchors.fill: parent
         contentWidth: container.width
         contentHeight: container.height
-        
+
         Item {
             id: container
-            
+
             width: image.width + borderSize * 2
             height: image.height + imageLabel.height + borderSize * 2
-            x: { 
+            x: {
                 if ( comicView.width > image.width)
                     return (comicView.width - container.width)/2 + borderSize
                 else

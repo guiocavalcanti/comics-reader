@@ -4,9 +4,9 @@ import "feed.js" as Feed
 Item {
     id: window
     width: 800; height: 480;
-    
+
     property bool loading: canvas.delegate.status == XmlListModel.Loading
-    property int lastComicId: 768;
+    property int lastComicId;
 
     Image {
         id: background
@@ -17,7 +17,7 @@ Item {
 
     Image {
         id: logo
-        
+
         source: "images/logo.png"
         anchors {
             right: parent.right
@@ -42,7 +42,7 @@ Item {
             rightMargin: 15
             right: controls.left
         }
-        
+
         onFullscreen: {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
@@ -52,7 +52,7 @@ Item {
 
     ComicView {
         id: fullscreen
-        
+
         opacity: 0
         onDoubleClicked: {
             window.state = "normalView"
@@ -61,9 +61,8 @@ Item {
 
     Settings {
         id: settings
-        
+
         opacity: 0
-        
         anchors {
             topMargin: 15
             top: parent.top
@@ -78,7 +77,7 @@ Item {
 
     Column {
         id: controls
-        
+
         width: 95
         anchors {
             right: parent.right
@@ -88,10 +87,10 @@ Item {
 
         Button {
             id: btFeeds
-            
+
             label: "feeds"
             anchors.horizontalCenter: parent.horizontalCenter
-            
+
             onClicked: {
                 if (window.state != "settings") {
                     window.state = "settings"
@@ -103,11 +102,11 @@ Item {
 
         Button { // Works only with XKCD feed
             id: btRandom
-            
+
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/random.png"
             iconUnpressed: "images/random.png"
-            
+
             onClicked: {
                 Feed.randomXkcdFeed(function (src, alt) {
                     fullscreen.currentImage = src
@@ -119,7 +118,7 @@ Item {
 
         Button {
             id: btLeft
-            
+
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/left.png"
             iconUnpressed: "images/left.png"
@@ -135,7 +134,7 @@ Item {
             onClicked: { canvas.incrementCurrentIndex() }
         }
     }
-    
+
     states: [
         State {
             name: "fullscreen"
@@ -151,7 +150,7 @@ Item {
         },
         State {
             name: "settings"
-            PropertyChanges { target: canvas; opacity: 0 }
+            PropertyChanges { target: canvas; opacity: 0.05 }
             PropertyChanges { target: controls; opacity: 1 }
             PropertyChanges { target: settings; opacity: 1 }
             PropertyChanges { target: btFeeds; label: "ok" }

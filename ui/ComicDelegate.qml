@@ -8,7 +8,7 @@ Item {
     property string alt: Feed.getAlt(model)
     property string title: model.comicTitle
     property bool isValidComic: image != ""
-    signal expand(int idx)
+    signal expand
 
     width: parent.parent.width
     height: parent.parent.height
@@ -65,9 +65,9 @@ Item {
         MouseArea {
             id: expandMouseArea
             anchors.fill: parent
-            
+
             onClicked: {
-                expand(index)
+                expand()
             }
         }
     }

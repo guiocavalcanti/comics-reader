@@ -3,7 +3,14 @@ import Qt 4.7
 Item {
     width: parent.width
     height: 50
+    
     signal deletedFeed(int index)
+    signal selectedFeed(int index)
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: selectedFeed(index)
+    }
 
     Text {
         text: model.title
