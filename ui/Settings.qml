@@ -56,10 +56,16 @@ Item {
     ListModel {
         id: feedModel
         ListElement {
-            url: "http://henrik.nyh.se/scrapers/cyanide_and_happiness.rss"
+            url: "http://feeds.feedburner.com/wondermark"
         }
         ListElement {
-            url: "http://feeds.feedburner.com/wondermark"
+            url: "http://www.rsspect.com/rss/qwantz.xml"
+        }
+        ListElement {
+            url: "http://www.arcamax.com/doonesbury/channelfeed"
+        }
+        ListElement {
+            url: "http://henrik.nyh.se/scrapers/cyanide_and_happiness.rss"
         }
         ListElement {
             url: "http://hazsci.thecomicseries.com/rss/"

@@ -23,7 +23,7 @@ ListModel {
         })
     }
     
-    function getRssInfo(feedSample) {
+    function _getRssInfo(feedSample) {
         
         var channel = null
         for(var i = 0; i < feedSample.childNodes.length; i++) {
@@ -42,7 +42,7 @@ ListModel {
         return {'title': title, 'description': description}
     }
     
-    function validateFeed(url, onValidated, onInvalidFeed) {
+    function _validateFeed(url, onValidated, onInvalidFeed) {
         var doc = new XMLHttpRequest()
         doc.onreadystatechange = function() {
             if (doc.readyState == XMLHttpRequest.DONE) {
@@ -53,7 +53,7 @@ ListModel {
                 
                 var feedSample = doc.responseXML.documentElement
                 if (feedSample.tagName.toString() == "rss") {
-                    var feedInfo = feeds.getRssInfo(doc.responseXML.documentElement)
+                    var feedInfo = feeds._getRssInfo(doc.responseXML.documentElement)
                     feedInfo['url'] = url
                     onValidated(feedInfo)
                 } else {
@@ -65,7 +65,7 @@ ListModel {
         doc.send()
     }
     
-    function addFeed(url) {SQL
+    function addFeed(url) {
         var db = openDatabaseSync("feed", "1.0", "Comics Feeds SQL", 1000000, "QSQLITE")
         function _addFeed(feedInfo) {
             var title = feedInfo['title']
@@ -76,7 +76,7 @@ ListModel {
             })
             feeds.append(feedInfo)
         }
-        validateFeed(url, _addFeed, invalidFeed);
+        feeds._validateFeed(url, _addFeed, invalidFeed);
     }
     
     function removeFeed(index) {
