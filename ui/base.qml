@@ -91,36 +91,29 @@ Item {
             
             label: "feed"
             anchors.horizontalCenter: parent.horizontalCenter
-            mouseArea: feedMouseArea
             
-            MouseArea {
-                id: feedMouseArea
-                
-                anchors.fill: parent
-                
-                onClicked: {
+            onClicked: {
+                if (window.state != "settings") {
                     window.state = "settings"
+                } else {
+                    window.state = "normalView"
                 }
             }
         }
 
-        Button { // TODO Works only with XKCD feed
+        Button { // Works only with XKCD feed
             id: btRandom
             
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/random.png"
             iconUnpressed: "images/random.png"
             
-            MouseArea {
-                anchors.fill: parent
-                
-                onClicked: {
-                    Feed.randomXkcdFeed(function (src, alt) {
-                        fullscreen.currentImage = src
-                        fullscreen.currentAlt = alt
-                        window.state = "fullscreen"
-                    })
-                }
+            onClicked: {
+                Feed.randomXkcdFeed(function (src, alt) {
+                    fullscreen.currentImage = src
+                    fullscreen.currentAlt = alt
+                    window.state = "fullscreen"
+                })
             }
         }
 
@@ -130,15 +123,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/left.png"
             iconUnpressed: "images/left.png"
-            mouseArea: leftMouseArea
-
-            MouseArea {
-                id: leftMouseArea
-                
-                anchors.fill: parent
-                
-                onClicked: { canvas.decrementCurrentIndex() }
-            }
+            onClicked: { canvas.decrementCurrentIndex() }
         }
 
         Button {
@@ -147,15 +132,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/right.png"
             iconUnpressed: "images/right.png"
-            mouseArea: rightMouseArea
-
-            MouseArea {
-                id: rightMouseArea
-                
-                anchors.fill: parent
-                
-                onClicked: { canvas.incrementCurrentIndex() }
-            }
+            onClicked: { canvas.incrementCurrentIndex() }
         }
     }
     

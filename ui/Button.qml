@@ -7,7 +7,7 @@ Item {
     property alias iconUnpressed: icon.sourceUnpressed
     property alias label: label.text
     property bool pressed: false
-    property MouseArea mouseArea
+    signal clicked
     
     width: 104; height: 52;
     
@@ -58,5 +58,9 @@ Item {
         icon.pressed = pressed
     }
     
-    
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        onClicked: { button.clicked() }
+    }
 }
