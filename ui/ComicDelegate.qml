@@ -54,7 +54,7 @@ Item {
         id: btExpand
 
         source: "images/expand.png"
-        width: 32; height: 31;
+        width: (isValidComic) ? 32 : 0; height: 31;
         anchors {
             right: parent.right
             rightMargin: 20

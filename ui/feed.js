@@ -44,6 +44,44 @@ function fetchRandomXkcdFeed(lastComicId, showComic) {
     doc.send()
 }
 
+function validateFeed(url, onValidated, onInvalidated) {
+    var doc = new XMLHttpRequest()
+    doc.onreadystatechange = function() {
+        if (doc.readyState == XMLHttpRequest.DONE) {
+            var feedSample = doc.responseXML.documentElement
+            if (feedSample.tagName.toString() == "rss") {
+                var feedInfo = getRssInfo(doc.responseXML.documentElement)
+                feedInfo['url'] = url
+                onValidated(feedInfo)
+            } else {
+                onInvalidated(url)
+            }
+        }
+    }
+    doc.open("GET", url)
+    doc.send()
+}
+
+function getRssInfo(feedSample) {
+    
+    var channel = null
+    for(var i = 0; i < feedSample.childNodes.length; i++) {
+        if(feedSample.childNodes[i].nodeName == "channel")
+            channel = feedSample.childNodes[i]
+    }
+    var title = ""
+    var description = ""//
+    for(var i = 0; i < channel.childNodes.length; i++) {
+        if(channel.childNodes[i].nodeName == "title")
+            title = channel.childNodes[i].firstChild.nodeValue
+        else if(channel.childNodes[i].nodeName == "description")
+            description = channel.childNodes[i].firstChild.nodeValue
+    }
+    console.log(feedSample.getElementsByTagName)
+    
+    return {'title': title, 'description': description}
+}
+
 function getImage(model) {
     if (model == undefined)
         return ""
