@@ -75,6 +75,12 @@ Item {
         id: feedModel
         
         ListElement {
+            url: "http://henrik.nyh.se/scrapers/cyanide_and_happiness.rss"
+        }
+        ListElement {
+            url: "http://feeds.feedburner.com/wondermark" // Doing
+        }
+        ListElement {
             url: "http://hazsci.thecomicseries.com/rss/" // Ok
         }
         ListElement {
@@ -91,9 +97,6 @@ Item {
         }
         ListElement {
             url: "http://tmi-comic.com/feed/" // Ugly
-        }
-        ListElement {
-            url: "http://feeds.feedburner.com/wondermark" // Doing
         }
         ListElement {
             url: "http://feeds.feedburner.com/JaysHindsight" // TODO this feed has some images which can't be opened due to unsafe connections

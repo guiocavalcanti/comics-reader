@@ -25,13 +25,13 @@ function fetchRandomXkcdFeed(lastComicId, showComic) {
                 var others = img[1] + img[3]
                 var alt = others.match("alt=\"(.*)\"" )
                 if (alt != null){
-                    alt = alt[1].split("\"")[0].replace("&#39;","'") // TODO find a better way to do this
+                    alt = alt[1].split("\"")[0]
                 } else {
                     alt = ""
                 }
                 var title = others.match("title=\"(.*)\"" )
                 if (title != null){
-                    title = title[1].split("\"")[0].replace("&#39;","'") // TODO find a better way to do this
+                    title = title[1].split("\"")[0]
                 } else {
                     title = ""
                 }
@@ -42,44 +42,6 @@ function fetchRandomXkcdFeed(lastComicId, showComic) {
     }
     doc.open("GET", "http://xkcd.com/" + comicId + "/")
     doc.send()
-}
-
-function validateFeed(url, onValidated, onInvalidated) {
-    var doc = new XMLHttpRequest()
-    doc.onreadystatechange = function() {
-        if (doc.readyState == XMLHttpRequest.DONE) {
-            var feedSample = doc.responseXML.documentElement
-            if (feedSample.tagName.toString() == "rss") {
-                var feedInfo = getRssInfo(doc.responseXML.documentElement)
-                feedInfo['url'] = url
-                onValidated(feedInfo)
-            } else {
-                onInvalidated(url)
-            }
-        }
-    }
-    doc.open("GET", url)
-    doc.send()
-}
-
-function getRssInfo(feedSample) {
-    
-    var channel = null
-    for(var i = 0; i < feedSample.childNodes.length; i++) {
-        if(feedSample.childNodes[i].nodeName == "channel")
-            channel = feedSample.childNodes[i]
-    }
-    var title = ""
-    var description = ""//
-    for(var i = 0; i < channel.childNodes.length; i++) {
-        if(channel.childNodes[i].nodeName == "title")
-            title = channel.childNodes[i].firstChild.nodeValue
-        else if(channel.childNodes[i].nodeName == "description")
-            description = channel.childNodes[i].firstChild.nodeValue
-    }
-    console.log(feedSample.getElementsByTagName)
-    
-    return {'title': title, 'description': description}
 }
 
 function getImage(model) {
