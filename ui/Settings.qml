@@ -160,10 +160,13 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if(input.acceptableInput){
+                        /*
                         feedModel.append({
                             "url" : feedInput.text, 
                             "title" : "New Item"
                         })
+                        */
+                        persistentFeed.addFeed(feedInput.text)
                     }
                 }
             }
@@ -172,7 +175,8 @@ Item {
 
     ListView {
         id: feedView
-        model: feedModel
+        clip: true
+        model: Feeds { id: persistentFeed }
         delegate: feedDelegate
         spacing: 5
         focus: true
@@ -183,11 +187,15 @@ Item {
             bottomMargin: 10
             right: parent.right
         }
-
+        highlightFollowsCurrentItem: true
         highlight: Rectangle { 
             color: "lightsteelblue";
             width: parent.width
             opacity: 0.5
+        }
+        onCurrentItemChanged: {
+            var index = feedView.currentIndex
+            settings.currentFeed = persistentFeed.get(index).url
         }
     }
     
