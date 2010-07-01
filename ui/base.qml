@@ -17,8 +17,8 @@ Item {
             topMargin: 30
             bottom: parent.bottom
             bottomMargin: 30
-            right: right.left
-            rightMargin: 20
+            right: left.left
+            rightMargin: 10
             left: parent.left
             leftMargin: 30
         }
