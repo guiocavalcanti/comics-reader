@@ -29,6 +29,7 @@ Item {
         
         iconPressed: "images/left-white.png"
         iconUnpressed: "images/left-black.png"
+        
         anchors {
             right: parent.right
             rightMargin: 20
@@ -41,6 +42,7 @@ Item {
         
         iconPressed: "images/right-white.png"
         iconUnpressed: "images/right-black.png"
+        
         anchors {
             bottom: left.top
             right: parent.right
@@ -53,6 +55,17 @@ Item {
         
         iconPressed: "images/config-white.png"
         iconUnpressed: "images/config-black.png"
+        anchors {
+            top: textBt.bottom
+            right: parent.right
+            rightMargin: 20
+        }
+    }
+    
+    Button {
+        id: textBt
+
+        label: "alt"
         anchors {
             top: left.bottom
             right: parent.right
