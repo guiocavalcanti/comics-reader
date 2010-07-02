@@ -14,41 +14,60 @@ Item {
     ComicCanvas {
         anchors {
             top: parent.top
-            topMargin: 30
+            topMargin: 20
             bottom: parent.bottom
-            bottomMargin: 30
+            bottomMargin: 20
             right: left.left
-            rightMargin: 10
+            rightMargin: 20
             left: parent.left
-            leftMargin: 30
+            leftMargin: 20
         }
     }
     
-    LeftButton {
+    Button {
         id: left
+        
+        iconPressed: "images/left-white.png"
+        iconUnpressed: "images/left-black.png"
         anchors {
             right: parent.right
-            rightMargin: 30
+            rightMargin: 20
             verticalCenter: parent.verticalCenter           
         }
     }
     
-    RightButton {
+    Button {
         id: right
+        
+        iconPressed: "images/right-white.png"
+        iconUnpressed: "images/right-black.png"
         anchors {
             bottom: left.top
             right: parent.right
-            rightMargin: 30
+            rightMargin: 20
         }
     }
     
-    ConfigButton {
+    Button {
         id: config
+        
+        iconPressed: "images/config-white.png"
+        iconUnpressed: "images/config-black.png"
         anchors {
             top: left.bottom
             right: parent.right
-            rightMargin: 30
+            rightMargin: 20
         }
     }
     
+    Button {
+        id: textBt
+
+        label: "Teste"
+        anchors {
+            top: config.bottom
+            right: parent.right
+            rightMargin: 20
+        }
+    }
 }

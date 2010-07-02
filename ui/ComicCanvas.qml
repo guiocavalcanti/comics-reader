@@ -3,10 +3,33 @@ import Qt 4.7
 Item {
     id: comicCanvas
     
+    Text {
+        id: title
+        text: "XKCD Title"
+        color: "white"
+        font {
+            family: "Arial"
+            bold: true
+            pointSize: 20
+        }
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+    }    
+    
     Flickable {
-        anchors.fill: parent 
-        contentWidth: comic.width; contentHeight: comic.height;
+        opacity: 12
         clip: true
+        contentWidth: comic.width; contentHeight: comic.height;
+        anchors {
+            top: title.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            topMargin: 10
+        }
         
         Image {
             id: comic
@@ -16,21 +39,5 @@ Item {
                 verticalCenter: parent.verticalCenter
             }
         }   
-    }
-    
-    Rectangle {
-        id: legend
-        
-        color: "black"
-        opacity: 0.5
-        radius: 10
-        z: 1
-        
-        anchors {
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-        }
-        
     }
 }
