@@ -32,9 +32,5 @@ Item {
             right: parent.right
         }
         
-        Text {
-            opacity: 1
-            text: "That's my hat!  You took my hat!"
-        }
     }
 }
