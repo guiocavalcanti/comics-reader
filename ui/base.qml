@@ -59,15 +59,4 @@ Item {
             rightMargin: 20
         }
     }
-    
-    Button {
-        id: textBt
-
-        label: "Teste"
-        anchors {
-            top: config.bottom
-            right: parent.right
-            rightMargin: 20
-        }
-    }
 }
