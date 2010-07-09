@@ -11,6 +11,7 @@ Item {
         anchors.fill: parent
     }
     
+    /* Canvas to place comics images */
     ComicCanvas {
         anchors {
             top: parent.top
