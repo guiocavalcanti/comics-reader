@@ -5,6 +5,7 @@ ListView {
 
     clip: true
     flickableDirection: Flickable.HorizontalFlick
+    orientation: ListView.Horizontal
     
     model: RSS2Model {}
     delegate: ComicDelegate {}
