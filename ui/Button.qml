@@ -32,8 +32,8 @@ Item {
         ]
     }
     
-    Label { id: label }    
-    Icon { id: icon }   
+    Label { id: label }
+    Icon { id: icon }
      
     MouseArea {
         id: mouseArea
