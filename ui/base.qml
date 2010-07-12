@@ -44,14 +44,30 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/left-white.png"
             iconUnpressed: "images/left-black.png"
+            mouseArea: leftMouseArea
+            
+            MouseArea {
+                id: leftMouseArea
+                
+                anchors.fill: parent
+                onClicked: { canvas.decrementCurrentIndex() }
+            }
         }
 
         Button {
             id: btRight
-            
+
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/right-white.png"
             iconUnpressed: "images/right-black.png"
+            mouseArea: rightMouseArea
+
+            MouseArea {
+                id: rightMouseArea
+
+                anchors.fill: parent
+                onClicked: { canvas.incrementCurrentIndex() }
+            }
         }
 
         Button {
@@ -70,4 +86,3 @@ Item {
         }
     }
 }
-

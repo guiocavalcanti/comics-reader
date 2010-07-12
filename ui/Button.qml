@@ -6,16 +6,22 @@ Item {
     property alias iconPressed: icon.sourcePressed
     property alias iconUnpressed: icon.sourceUnpressed
     property alias label: label.text
+    property bool pressed: false
+    property MouseArea mouseArea
     
     width: 78; height: 43;
     
     Image {
         id: background
+    
+        property bool pressed: false
+
         source: "images/bt-normal.png"
         
         states: [
             State {
                 name: "unpressed"
+                when: pressed == false
                 PropertyChanges { 
                     target: background
                     source: "images/bt-normal.png" 
@@ -24,6 +30,7 @@ Item {
             
             State {
                 name: "pressed"
+                when: pressed == true
                 PropertyChanges { 
                     target: background
                     source: "images/bt-pressed.png" 
@@ -34,20 +41,22 @@ Item {
     
     Label { id: label }
     Icon { id: icon }
-     
-    MouseArea {
-        id: mouseArea
+    
+    Connections {
+        target: mouseArea
+        onPressed: {
+            button.pressed = true
+        }
         
-        anchors.fill: parent
-        onPressed: { 
-            background.state  = "pressed" 
-            label.state = "pressed"
-            icon.state = "pressed"
-        } 
-        onReleased: { 
-            background.state  = "unpressed"
-            label.state = "unpressed"
-            icon.state = "unpressed"
-        } 
+        onReleased: {
+            button.pressed = false
+        }
     }
+    
+    onPressedChanged: {
+        label.pressed = pressed
+        icon.pressed = pressed
+    }
+    
+    
 }

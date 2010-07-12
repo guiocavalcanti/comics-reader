@@ -5,6 +5,7 @@ Image {
     
     property string sourcePressed
     property string sourceUnpressed
+    property bool pressed: false
     
     width: 24; height: 24;
     x: 25; y: 8;
@@ -14,6 +15,7 @@ Image {
     states: [
         State {
             name: "pressed"
+            when: pressed == true
             PropertyChanges {
                 target: icon
                 source: sourcePressed
@@ -22,6 +24,7 @@ Image {
         
         State {
             name: "unpressed"
+            when: pressed == false
             PropertyChanges {
                 target: icon
                 source: sourceUnpressed
