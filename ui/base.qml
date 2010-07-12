@@ -45,11 +45,12 @@ Item {
             iconPressed: "images/left-white.png"
             iconUnpressed: "images/left-black.png"
             mouseArea: leftMouseArea
-            
+
             MouseArea {
                 id: leftMouseArea
                 
                 anchors.fill: parent
+                
                 onClicked: { canvas.decrementCurrentIndex() }
             }
         }
@@ -64,8 +65,9 @@ Item {
 
             MouseArea {
                 id: rightMouseArea
-
+                
                 anchors.fill: parent
+                
                 onClicked: { canvas.incrementCurrentIndex() }
             }
         }
