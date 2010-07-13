@@ -2,7 +2,6 @@ import Qt 4.7
 
 Item{
     id: comicView
-    anchors.fill: parent
     
     property string image;
     property string alt;
@@ -10,6 +9,7 @@ Item{
     property int borderSize: 40;
     signal doubleClicked;
     
+    anchors.fill: parent
     
     Flickable {
         anchors.fill: parent
@@ -18,6 +18,7 @@ Item{
         
         Item {
             id: container
+            
             width: image.width + borderSize * 2
             height: image.height + imageLabel.height + borderSize * 2
             x: { 
@@ -32,25 +33,34 @@ Item{
                 else
                     return borderSize
             }
+
             Image {
                 id: image
                 source: comicView.image
             }
+
             Text {
                 id: imageLabel
-                anchors.top: image.bottom
-                anchors.left: image.left
-                anchors.right: image.right
-                wrapMode: Text.WordWrap
-                font.family: "Univers LT Std"
-                font.pixelSize: 12
-                font.bold: true
-                font.italic: true
+                
                 color: "black"
                 text: comicView.title
+                wrapMode: Text.WordWrap
+                anchors {
+                    top: image.bottom
+                    left: image.left
+                    right: image.right
+                }
+                font {
+                    family: "Univers LT Std"
+                    pixelSize: 12
+                    bold: true
+                    italic: true
+                }
             }
+
             MouseArea {
                 id: mouseArea
+                
                 anchors.fill: parent
                 onDoubleClicked: {
                     comicView.doubleClicked();
