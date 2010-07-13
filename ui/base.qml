@@ -80,6 +80,14 @@ Item {
         }
 
         Button {
+            id: btRandom
+            
+            anchors.horizontalCenter: parent.horizontalCenter
+            iconPressed: "images/random.png"
+            iconUnpressed: "images/random.png"
+        }
+
+        Button {
             id: btAlt
             
             anchors.horizontalCenter: parent.horizontalCenter
