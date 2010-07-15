@@ -26,14 +26,28 @@ Item {
             rightMargin: 10
             right: controls.left
         }
+        
+        MouseArea {
+            anchors.fill:parent
+            onClicked: {
+                console.log(canvas.currentItem.image)
+                console.log(canvas.currentItem.alt)
+            }
+        }
+        
+        onCurrentItemChanged: {
+            fullscreen.currentImage = canvas.currentItem.image
+            fullscreen.currentAlt = canvas.currentItem.alt
+        }
     }
     
     ComicView {
         id: fullscreen
         
-        currentItem: canvas.currentItem
         opacity: 0
-        onDoubleClicked: { window.state = "normalView" }
+        onDoubleClicked: { 
+            window.state = "normalView" 
+        }
     }
 
     Column {
