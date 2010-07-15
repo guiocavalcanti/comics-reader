@@ -31,9 +31,13 @@ Item {
         
         fillMode: Image.PreserveAspectFit
         source: getImageAttribute(comicContent, 0)
+        
         anchors {
-           top: title.bottom
-           topMargin: 10
+            top: title.bottom
+            right: parent.right
+            left: parent.left
+            bottom: parent.bottom
+            topMargin: 10
         }
     }
 
