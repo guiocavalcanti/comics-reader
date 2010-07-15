@@ -4,6 +4,8 @@ Item {
     id: window
     width: 800; height: 480;
     
+    property bool loading: canvas.delegate.status == XmlListModel.Loading
+    
     Image {
         id: background
 
@@ -30,6 +32,17 @@ Item {
         onCurrentItemChanged: {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
+        }
+        
+
+        BusyIndicator {
+            anchors.centerIn: parent
+            on: { canvas.model.status == XmlListModel.Loading }
+        }
+        
+        MouseArea {
+            anchors.fill: parent
+            onClicked: { console.log(canvas.model.status) }
         }
     }
     

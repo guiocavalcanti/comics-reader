@@ -1,12 +1,14 @@
 import Qt 4.7
 
 Item {
+    id: delegate
+    
     width: parent.parent.width
     height: parent.parent.height
     
     property string alt: getImageAttribute(comicContent, 2)
     property alias image: strip.source
-    
+
     Text {
         id: title
         
