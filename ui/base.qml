@@ -10,7 +10,7 @@ Item {
         source: "images/background.jpg"
         anchors.fill: parent
     }
-
+    
     /* Canvas to place comics images */
     ComicCanvas {
         id: canvas
@@ -38,10 +38,15 @@ Item {
         
         opacity: 0
         onDoubleClicked: { 
-            window.state = "normalView" 
+            window.state = "normalView"
         }
     }
-
+    
+    XKCDModel {
+        id: xkcdModel
+        comicId: 1
+    }
+    
     Column {
         id: controls
         
@@ -92,6 +97,17 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/random.png"
             iconUnpressed: "images/random.png"
+            
+            MouseArea {
+                anchors.fill: parent
+                
+                onClicked: {
+                    xkcdModel.comicId = Math.floor(Math.random() * 100)
+                    fullscreen.currentImage = xkcdModel.image
+                    fullscreen.currentAlt = xkcdModel.alt
+                    window.state = "fullscreen"
+                }
+            }
         }
 
         Button {

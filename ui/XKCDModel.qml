@@ -3,7 +3,7 @@ import Qt 4.7
 Item {
     id: xkcd
     
-    property int pageId;
+    property int comicId;
     property string title;
     property string image;
     property string alt;
@@ -11,7 +11,7 @@ Item {
     XmlListModel {
         id: xkcdModel
         namespaceDeclarations: "declare default element namespace 'http://www.w3.org/1999/xhtml';"
-        source: "http://xkcd.com/" + xkcd.pageId + "/";
+        source: "http://xkcd.com/" + xkcd.comicId + "/";
         
         query: "//div[@class='s']/img";
         
