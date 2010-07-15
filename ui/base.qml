@@ -14,7 +14,8 @@ Item {
     /* Canvas to place comics images */
     ComicCanvas {
         id: canvas
-
+        
+        opacity: 1
         anchors {
             topMargin: 20
             top: parent.top
@@ -26,10 +27,18 @@ Item {
             right: controls.left
         }
     }
+    
+    ComicView {
+        id: fullscreen
+        
+        currentItem: canvas.currentItem
+        opacity: 0
+        onDoubleClicked: { window.state = "normalView" }
+    }
 
     Column {
         id: controls
-
+        
         width: 80
         anchors {
             right: parent.right
@@ -39,7 +48,7 @@ Item {
 
         Button {
             id: btLeft
-
+            
             anchors.horizontalCenter: parent.horizontalCenter
             iconPressed: "images/left-white.png"
             iconUnpressed: "images/left-black.png"
@@ -72,14 +81,6 @@ Item {
         }
 
         Button {
-            id: btConfig
-            
-            anchors.horizontalCenter: parent.horizontalCenter
-            iconPressed: "images/config-white.png"
-            iconUnpressed: "images/config-black.png"
-        }
-
-        Button {
             id: btRandom
             
             anchors.horizontalCenter: parent.horizontalCenter
@@ -88,10 +89,38 @@ Item {
         }
 
         Button {
-            id: btAlt
+            id: btConfig
             
             anchors.horizontalCenter: parent.horizontalCenter
-            label: "alt"
+            iconPressed: "images/expand.png"
+            iconUnpressed: "images/expand.png"
+            mouseArea: configMouseArea
+            
+            MouseArea {
+                id: configMouseArea
+                
+                anchors.fill: parent
+                
+                onClicked: { 
+                    window.state = "fullscreen" 
+                }
+            
+            }
         }
     }
+
+    states: [
+        State {
+            name: "fullscreen"
+            PropertyChanges { target: fullscreen; opacity: 1 }
+            PropertyChanges { target: canvas; opacity: 0 }
+            PropertyChanges { target: controls; opacity: 0 }
+        },
+        State {
+            name: "normalView"
+            PropertyChanges { target: canvas; opacity: 1 }
+            PropertyChanges { target: controls; opacity: 1 }
+            PropertyChanges { target: fullscreen; opacity: 0 }
+        }
+    ]
 }

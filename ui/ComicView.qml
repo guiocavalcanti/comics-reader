@@ -2,14 +2,22 @@ import Qt 4.7
 
 Item{
     id: comicView
-    
-    property string image;
-    property string alt;
-    property string title;
+    /**
+        #TODO a workaround for TypeError (comicView.currentItem)
+        could be done passing the item index and the XMLListModel
+    **/
+    property Item currentItem
     property int borderSize: 40;
     signal doubleClicked;
     
     anchors.fill: parent
+
+    Rectangle {
+        id: blackout
+        
+        color: "black"
+        anchors.fill: parent
+    }
     
     Flickable {
         anchors.fill: parent
@@ -36,25 +44,25 @@ Item{
 
             Image {
                 id: image
-                source: comicView.image
+                source: comicView.currentItem.image
             }
 
             Text {
                 id: imageLabel
                 
-                color: "black"
-                text: comicView.title
+                color: "white"
+                text: comicView.currentItem.alt
                 wrapMode: Text.WordWrap
                 anchors {
                     top: image.bottom
+                    topMargin: 20
                     left: image.left
                     right: image.right
                 }
                 font {
-                    family: "Univers LT Std"
-                    pixelSize: 12
+                    family: "Arial"
+                    pointSize: 12
                     bold: true
-                    italic: true
                 }
             }
 
@@ -68,5 +76,4 @@ Item{
             }
         }
     }
-    
 }

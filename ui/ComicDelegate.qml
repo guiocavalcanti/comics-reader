@@ -4,15 +4,18 @@ Item {
     width: parent.parent.width
     height: parent.parent.height
     
+    property string alt: getImageAttribute(comicContent, 2)
+    property alias image: strip.source
+    
     Text {
-        id: comicTitle
-
+        id: title
+        
         anchors {
             left: parent.left
             right: parent.righth
         }
 
-        text: title
+        text: comicTitle
         color: "white"
         font {
             family: "Arial"
@@ -22,12 +25,12 @@ Item {
     }
 
     Image {
-        id: comicImage
+        id: strip
         
         fillMode: Image.PreserveAspectFit
-        source: getImageAttribute(image, 0)
+        source: getImageAttribute(comicContent, 0)
         anchors {
-           top: comicTitle.bottom
+           top: title.bottom
            topMargin: 10
         }
     }

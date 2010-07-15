@@ -5,6 +5,6 @@ XmlListModel {
     source: "http://xkcd.com/rss.xml"
     query: "/rss/channel/item"
     
-    XmlRole { name: "title"; query: "title/string()" }
-    XmlRole { name: "image"; query: "description/string()" }
+    XmlRole { name: "comicTitle"; query: "title/string()" }
+    XmlRole { name: "comicContent"; query: "description/string()" }
 }
