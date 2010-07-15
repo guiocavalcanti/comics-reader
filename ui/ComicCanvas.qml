@@ -8,4 +8,9 @@ ListView {
     orientation: ListView.Horizontal
     model: RSS2Model {}
     delegate: ComicDelegate {}
+
+    BusyIndicator {
+        anchors.centerIn: parent
+        on: { comic.model.status == XmlListModel.Loading }
+    }
 }

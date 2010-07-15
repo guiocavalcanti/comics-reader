@@ -33,17 +33,6 @@ Item {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
         }
-        
-
-        BusyIndicator {
-            anchors.centerIn: parent
-            on: { canvas.model.status == XmlListModel.Loading }
-        }
-        
-        MouseArea {
-            anchors.fill: parent
-            onClicked: { console.log(canvas.model.status) }
-        }
     }
     
     ComicView {
@@ -57,7 +46,6 @@ Item {
     
     XKCDModel {
         id: xkcdModel
-        comicId: 1
     }
     
     Column {

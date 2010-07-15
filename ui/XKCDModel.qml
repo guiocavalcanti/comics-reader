@@ -3,10 +3,12 @@ import Qt 4.7
 Item {
     id: xkcd
     
-    property int comicId;
+    property int comicId: 1;
     property string title;
     property string image;
     property string alt;
+    
+    anchors.fill: parent
     
     XmlListModel {
         id: xkcdModel
