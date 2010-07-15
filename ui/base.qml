@@ -27,14 +27,6 @@ Item {
             right: controls.left
         }
         
-        MouseArea {
-            anchors.fill:parent
-            onClicked: {
-                console.log(canvas.currentItem.image)
-                console.log(canvas.currentItem.alt)
-            }
-        }
-        
         onCurrentItemChanged: {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
