@@ -17,9 +17,9 @@ Item {
         
         query: "//div[@class='s']/img";
         
-        XmlRole { name: "title"; query: "@title/string()" }
+        XmlRole { name: "title"; query: "@alt/string()" }
         XmlRole { name: "image"; query: "@src/string()" }
-        XmlRole { name: "alt"; query: "@alt/string()" }
+        XmlRole { name: "alt"; query: "@title/string()" }
         
         onStatusChanged: {
             if (status == XmlListModel.Ready) {
