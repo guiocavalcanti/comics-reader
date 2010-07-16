@@ -94,6 +94,20 @@ Item {
         }
 
         Button {
+            id: btFeeds
+            
+            label: "feed"
+            anchors.horizontalCenter: parent.horizontalCenter
+            mouseArea: feedMouseArea
+            
+            MouseArea {
+                id: feedMouseArea
+                
+                anchors.fill: parent
+            }
+        }
+
+        Button {
             id: btRandom
             
             anchors.horizontalCenter: parent.horizontalCenter
