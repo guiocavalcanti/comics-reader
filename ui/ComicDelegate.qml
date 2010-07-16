@@ -6,7 +6,7 @@ Item {
     width: parent.parent.width
     height: parent.parent.height
     
-    property string alt: getImageAttribute(comicContent, 2)
+    property string alt: getImageAttribute(comicContent, 1)
     property alias image: strip.source
 
     Text {
