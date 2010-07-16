@@ -57,6 +57,10 @@ Item {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
         }
+        
+        onExpand: {
+            window.state = "fullscreen"
+        }
     }
     
     ComicView {
@@ -106,6 +110,10 @@ Item {
                 id: feedMouseArea
                 
                 anchors.fill: parent
+                
+                onClicked: {
+                    window.state = "settings"
+                }
             }
         }
 
@@ -177,6 +185,11 @@ Item {
             PropertyChanges { target: canvas; opacity: 1 }
             PropertyChanges { target: controls; opacity: 1 }
             PropertyChanges { target: fullscreen; opacity: 0 }
+        },
+        State {
+            name: "settings"
+            PropertyChanges { target: canvas; opacity: 0 }
+            PropertyChanges { target: controls; opacity: 1 }
         }
     ]
 }
