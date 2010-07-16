@@ -110,26 +110,6 @@ Item {
                 }
             }
         }
-
-        Button {
-            id: btConfig
-            
-            anchors.horizontalCenter: parent.horizontalCenter
-            iconPressed: "images/expand.png"
-            iconUnpressed: "images/expand.png"
-            mouseArea: configMouseArea
-            
-            MouseArea {
-                id: configMouseArea
-                
-                anchors.fill: parent
-                
-                onClicked: { 
-                    window.state = "fullscreen" 
-                }
-            
-            }
-        }
     }
 
     states: [
