@@ -16,7 +16,7 @@ Item{
         color: "black"
         anchors.fill: parent
     }
-    
+
     Flickable {
         anchors.fill: parent
         contentWidth: container.width
@@ -71,6 +71,11 @@ Item{
                 onDoubleClicked: {
                     comicView.doubleClicked();
                 }
+            }
+
+            BusyIndicator {
+                anchors.centerIn: parent
+                on: { image.status == XmlListModel.Loading }
             }
         }
     }
