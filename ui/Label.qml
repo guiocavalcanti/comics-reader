@@ -13,24 +13,4 @@ Text {
         verticalCenter: parent.verticalCenter
         verticalCenterOffset: -1
     }
-    
-    states: [
-        State {
-            name: "unpressed"
-            when: { pressed == false }
-            PropertyChanges {
-                target: label
-                color: "black"
-            }
-        },
-        
-        State {
-            name: "pressed"
-            when: { pressed == true }
-            PropertyChanges {
-                target: label
-                color: "white"
-            }
-        }
-    ]
 }
