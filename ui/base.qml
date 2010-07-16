@@ -94,6 +94,25 @@ Item {
         }
 
         Button {
+            id: btRandom
+            
+            anchors.horizontalCenter: parent.horizontalCenter
+            iconPressed: "images/random.png"
+            iconUnpressed: "images/random.png"
+            
+            MouseArea {
+                anchors.fill: parent
+                
+                onClicked: {
+                    xkcdModel.comicId = Math.floor(Math.random() * 100)
+                    fullscreen.currentImage = xkcdModel.image
+                    fullscreen.currentAlt = xkcdModel.alt
+                    window.state = "fullscreen"
+                }
+            }
+        }
+
+        Button {
             id: btLeft
             
             anchors.horizontalCenter: parent.horizontalCenter
@@ -124,25 +143,6 @@ Item {
                 anchors.fill: parent
                 
                 onClicked: { canvas.incrementCurrentIndex() }
-            }
-        }
-
-        Button {
-            id: btRandom
-            
-            anchors.horizontalCenter: parent.horizontalCenter
-            iconPressed: "images/random.png"
-            iconUnpressed: "images/random.png"
-            
-            MouseArea {
-                anchors.fill: parent
-                
-                onClicked: {
-                    xkcdModel.comicId = Math.floor(Math.random() * 100)
-                    fullscreen.currentImage = xkcdModel.image
-                    fullscreen.currentAlt = xkcdModel.alt
-                    window.state = "fullscreen"
-                }
             }
         }
     }
