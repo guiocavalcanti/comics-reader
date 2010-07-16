@@ -145,27 +145,6 @@ Item {
                 }
             }
         }
-/*
-        Button {
-            id: btExpand
-            
-            anchors.horizontalCenter: parent.horizontalCenter
-            iconPressed: "images/expand.png"
-            iconUnpressed: "images/expand.png"
-            mouseArea: expandMouseArea
-            
-            MouseArea {
-                id: expandMouseArea
-                
-                anchors.fill: parent
-                
-                onClicked: { 
-                    window.state = "fullscreen" 
-                }
-            
-            }
-        }
-*/
     }
     states: [
         State {
