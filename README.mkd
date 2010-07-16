@@ -1,0 +1,7 @@
+## XKCD Reader
+A [XKCD Reader](http://xkcd.com/) intend to run on Maemo 5 and Symian platforms.
+
+## Build Instructions
+1.    You must have [Qt 4.7](http://qt.gitorious.org/qt) with qmlviewer
+2.    Run 
+      `qmlviewer ui/base.qml` from terminal.
