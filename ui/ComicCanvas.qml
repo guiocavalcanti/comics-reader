@@ -8,6 +8,7 @@ ListView {
     orientation: ListView.Horizontal
     model: RSS2Model {}
     delegate: ComicDelegate {}
+    spacing: 10
 
     BusyIndicator {
         anchors.centerIn: parent
