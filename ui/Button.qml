@@ -9,7 +9,7 @@ Item {
     property bool pressed: false
     property MouseArea mouseArea
     
-    width: 78; height: 43;
+    width: 104; height: 52;
     
     Image {
         id: background

@@ -41,7 +41,8 @@ Item {
             right: parent.right
             left: parent.left
             bottom: parent.bottom
-            topMargin: 10
+            bottomMargin: 15
+            topMargin: 30
         }
     }
 

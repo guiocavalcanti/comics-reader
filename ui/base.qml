@@ -9,7 +9,7 @@ Item {
     Image {
         id: background
 
-        source: "images/background.jpg"
+        source: "images/background.png"
         anchors.fill: parent
     }
     
@@ -19,16 +19,39 @@ Item {
         
         opacity: 1
         anchors {
-            topMargin: 20
+            topMargin: 15
             top: parent.top
-            leftMargin: 20
+            leftMargin: 15
             left: parent.left
             bottomMargin: 20
             bottom: parent.bottom
-            rightMargin: 10
+            rightMargin: 15
             right: controls.left
         }
-        
+
+        Image {
+            id: btExpand
+            
+            source: "images/expand.png"
+            width: 32; height: 31;
+            anchors {
+                right: parent.right
+                rightMargin: 20
+                bottom: parent.bottom
+                bottomMargin: 20
+            }
+            
+            MouseArea {
+                id: expandMouseArea
+                
+                anchors.fill: parent
+                
+                onClicked: { 
+                    window.state = "fullscreen" 
+                }
+            }
+        }
+
         onCurrentItemChanged: {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
@@ -48,10 +71,22 @@ Item {
         id: xkcdModel
     }
     
+    Image {
+        id: logo
+        
+        source: "images/logo.png"
+        anchors {
+            right: parent.right
+            rightMargin: 20
+            top: parent.top
+            topMargin: 15
+        }
+    }
+
     Column {
         id: controls
         
-        width: 80
+        width: 95
         anchors {
             right: parent.right
             rightMargin: 20
@@ -62,8 +97,8 @@ Item {
             id: btLeft
             
             anchors.horizontalCenter: parent.horizontalCenter
-            iconPressed: "images/left-white.png"
-            iconUnpressed: "images/left-black.png"
+            iconPressed: "images/left.png"
+            iconUnpressed: "images/left.png"
             mouseArea: leftMouseArea
 
             MouseArea {
@@ -79,8 +114,8 @@ Item {
             id: btRight
 
             anchors.horizontalCenter: parent.horizontalCenter
-            iconPressed: "images/right-white.png"
-            iconUnpressed: "images/right-black.png"
+            iconPressed: "images/right.png"
+            iconUnpressed: "images/right.png"
             mouseArea: rightMouseArea
 
             MouseArea {
@@ -110,7 +145,7 @@ Item {
                 }
             }
         }
-    
+/*
         Button {
             id: btExpand
             
@@ -130,8 +165,8 @@ Item {
             
             }
         }
+*/
     }
-
     states: [
         State {
             name: "fullscreen"

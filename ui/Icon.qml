@@ -7,8 +7,8 @@ Image {
     property string sourceUnpressed
     property bool pressed: false
     
-    width: 24; height: 24;
-    x: 25; y: 8;
+    width: 22; height: 22;
+    x: 38; y: 12;
     fillMode: Image.PreserveAspectFit
     source: sourceUnpressed
     
