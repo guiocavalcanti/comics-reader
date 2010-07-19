@@ -96,8 +96,50 @@ Item {
             bold: true
             pointSize: 20
         }
-    }
+   }
+    Item {
+        id: feedInput
+        
+        height: 60
+        anchors {
+            top: title.bottom
+            topMargin: 25
+            right: parent.right
+            rightMargin: 10
+            left: parent.left
+            leftMargin: 10
+            bottomMargin: 10
+        }
 
+        TextInput {
+            text: "Add feed"
+            color: "white"
+            anchors {
+                left: parent.left
+                right: btAddFeed.left
+                rightMargin: 10
+                verticalCenter: parent.verticalCenter
+                verticalCenterOffset: -5
+                
+            }
+            font {
+                pointSize: 18
+                family: "Arial"
+                bold: true
+            }
+            Rectangle { anchors.fill: parent; color: "white"; opacity: 0.2}
+        }
+        
+        Button {
+            id: btAddFeed
+            
+            label: "add"
+            anchors {
+                top: parent.top
+                right: parent.right
+            }
+        }
+    }
     ListView {
         id: feedView
         
@@ -105,8 +147,7 @@ Item {
         delegate: feedDelegate
         spacing: 5
         anchors {
-            top: title.bottom
-            topMargin: 25
+            top: feedInput.bottom
             left: parent.left
             bottom: parent.bottom
             bottomMargin: 10
