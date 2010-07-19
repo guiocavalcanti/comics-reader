@@ -7,4 +7,5 @@ XmlListModel {
     
     XmlRole { name: "comicTitle"; query: "title/string()" }
     XmlRole { name: "comicContent"; query: "description/string()" }
+    XmlRole { name: "comicLink"; query: "link/string()" }
 }

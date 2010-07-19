@@ -3,7 +3,7 @@ import Qt 4.7
 Item {
     id: xkcd
     
-    property int comicId: 1;
+    property int comicId;
     property string title;
     property string image;
     property string alt;

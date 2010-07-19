@@ -5,6 +5,7 @@ Item {
     width: 800; height: 480;
     
     property bool loading: canvas.delegate.status == XmlListModel.Loading
+    property int lastComicId: 768;
     
     Image {
         id: background
@@ -51,7 +52,7 @@ Item {
                 }
             }
         }
-
+        
         onCurrentItemChanged: {
             fullscreen.currentImage = canvas.currentItem.image
             fullscreen.currentAlt = canvas.currentItem.alt
@@ -62,13 +63,14 @@ Item {
         id: fullscreen
         
         opacity: 0
-        onDoubleClicked: { 
+        onDoubleClicked: {
             window.state = "normalView"
         }
     }
     
     XKCDModel {
         id: xkcdModel
+        comicId: Math.floor(Math.random() * lastComicId) + 1
     }
     
     Image {
@@ -118,7 +120,10 @@ Item {
                 anchors.fill: parent
                 
                 onClicked: {
-                    xkcdModel.comicId = Math.floor(Math.random() * 100)
+                    var re = new RegExp("^http://xkcd.com/([0-9]*)/$")
+                    var match = re.exec(canvas.model.get(0).comicLink)
+                    lastComicId = parseInt(match[1])
+                    xkcdModel.comicId = Math.floor(Math.random() * lastComicId) + 1
                     fullscreen.currentImage = xkcdModel.image
                     fullscreen.currentAlt = xkcdModel.alt
                     window.state = "fullscreen"
