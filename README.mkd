@@ -1,5 +1,5 @@
 ## XKCD Reader
-A [XKCD Reader](http://xkcd.com/) that intend to run on Maemo 5 and Symbian platforms.
+A [XKCD Reader](http://xkcd.com/) that intend to run on Maemo 5 and Symbian platforms..
 
 ## Build Instructions
 1.    You must have [Qt 4.7](http://qt.gitorious.org/qt) with qmlviewer
