@@ -77,6 +77,23 @@ Item {
         comicId: Math.floor(Math.random() * lastComicId) + 1
     }
     
+    Settings {
+        id: settings
+        
+        opacity: 0
+        
+        anchors {
+            topMargin: 15
+            top: parent.top
+            leftMargin: 15
+            left: parent.left
+            bottomMargin: 20
+            bottom: parent.bottom
+            rightMargin: 15
+            right: controls.left
+        }
+    }
+    
     Image {
         id: logo
         
@@ -190,6 +207,7 @@ Item {
             name: "settings"
             PropertyChanges { target: canvas; opacity: 0 }
             PropertyChanges { target: controls; opacity: 1 }
+            PropertyChanges { target: settings; opacity: 1 }
         }
     ]
 }
