@@ -9,7 +9,7 @@ Item {
         id: feedDelegate
         Item {
             width: parent.width
-            height: 30
+            height: 50
 
             Text {
                 text: url
@@ -31,17 +31,44 @@ Item {
 
             Item {
                 id: tick
-                width: 20; height: 20;
+                width: 32; height: 32;
                 anchors {
+                    verticalCenter: parent.verticalCenter
                     left: parent.left
-                    leftMargin: 5
-                    bottom: parent.bottom
-                    bottomMargin: 5
+                    leftMargin: 10
                 }
 
-                Rectangle {
-                    color: "white"
-                    anchors.fill: parent
+                Image {
+                    id: tickImg
+                    property bool ticked: false
+                    
+                    states: [
+                        State {
+                            name: "tick"
+                            when: tickImg.ticked == false
+                            PropertyChanges {
+                                target: tickImg
+                                source: "images/bt-radio-white.png"
+                            }
+                        },
+
+                        State {
+                            name: "untick"
+                            when: tickImg.ticked == true
+                            PropertyChanges {
+                                target: tickImg
+                                source: "images/bt-radio-orange.png"
+                            }
+                        }
+                    ]
+
+                    MouseArea { 
+                        id: tickImgArea
+                        anchors.fill: parent
+                        onClicked: {
+                            tickImg.ticked = (tickImg.ticked) ? false : true
+                        }
+                    }
                 }
             }
 
@@ -49,10 +76,9 @@ Item {
                 id: btDelete
                 width: 20; height: 20;
                 anchors {
+                    verticalCenter: parent.verticalCenter
                     right: parent.right
-                    rightMargin: 5
-                    bottom: parent.bottom
-                    bottomMargin: 5
+                    rightMargin: 10
                 }
                 Rectangle {
                     color: "white"
