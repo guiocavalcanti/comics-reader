@@ -74,15 +74,16 @@ Item {
 
             Item {
                 id: btDelete
-                width: 20; height: 20;
+                width: 32; height: 32;
                 anchors {
                     verticalCenter: parent.verticalCenter
                     right: parent.right
                     rightMargin: 10
                 }
-                Rectangle {
-                    color: "white"
-                    anchors.fill: parent
+
+                Image {
+                    id: trashImg
+                    source: "images/bt-trash.png"
                 }
             }
 
@@ -91,7 +92,6 @@ Item {
                 opacity: 0.1
                 anchors.fill: parent
             }
-        
         }
     }
 
@@ -160,8 +160,8 @@ Item {
 
         TextInput {
             id: input
-            text: "Add feed"
             color: "white"
+            validator: RegExpValidator { regExp: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/ }
             anchors {
                 left: parent.left
                 right: btAddFeed.left
@@ -189,7 +189,9 @@ Item {
                 id: addFeedMouseArea
                 anchors.fill: parent
                 onClicked: {
-                    feedModel.append({"url" : feedInput.text})
+                    if(input.acceptableInput){
+                        feedModel.append({"url" : feedInput.text})
+                    }
                 }
             }
         }
