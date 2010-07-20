@@ -35,10 +35,10 @@ Item {
         
         fillMode: Image.PreserveAspectFit
         source: getImageAttribute(comicContent, 0)
+        width: Math.min(strip.sourceSize.width, parent.width)
         
         anchors {
             top: title.bottom
-            right: parent.right
             left: parent.left
             bottom: parent.bottom
             bottomMargin: 15
