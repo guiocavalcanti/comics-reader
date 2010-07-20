@@ -2,11 +2,11 @@ import Qt 4.7
 
 Item {
     id: settings
+
     property string currentFeed: feedModel.get(0).url;
-    
+
     Component {
         id: feedDelegate
-        
         Item {
             width: parent.width
             height: 30
@@ -31,7 +31,6 @@ Item {
 
             Item {
                 id: tick
-                
                 width: 20; height: 20;
                 anchors {
                     left: parent.left
@@ -39,7 +38,7 @@ Item {
                     bottom: parent.bottom
                     bottomMargin: 5
                 }
-                
+
                 Rectangle {
                     color: "white"
                     anchors.fill: parent
@@ -48,7 +47,6 @@ Item {
 
             Item {
                 id: btDelete
-                
                 width: 20; height: 20;
                 anchors {
                     right: parent.right
@@ -70,10 +68,9 @@ Item {
         
         }
     }
-    
+
     ListModel {
         id: feedModel
-        
         ListElement {
             url: "http://henrik.nyh.se/scrapers/cyanide_and_happiness.rss"
         }
@@ -101,6 +98,7 @@ Item {
         ListElement {
             url: "http://feeds.feedburner.com/JaysHindsight" // TODO this feed has some images which can't be opened due to unsafe connections
         }
+
         ListElement {
             url: "http://www.questionablecontent.net/QCRSS.xml" // TODO this feed has more than one image per feed entry and the comic is not the first.
         }
@@ -108,23 +106,21 @@ Item {
 
     Text {
         id: title
-        
+        text: "Settings"
+        color: "white"
         anchors {
             left: parent.left
             right: parent.righth
         }
-
-        text: "Settings"
-        color: "white"
         font {
-            family: "Arial"
+            family: "Trebuchet MS"
             bold: true
             pointSize: 20
         }
-   }
+    }
     Item {
         id: feedInput
-        
+        property alias text: input.text
         height: 60
         anchors {
             top: title.bottom
@@ -137,6 +133,7 @@ Item {
         }
 
         TextInput {
+            id: input
             text: "Add feed"
             color: "white"
             anchors {
@@ -145,29 +142,35 @@ Item {
                 rightMargin: 10
                 verticalCenter: parent.verticalCenter
                 verticalCenterOffset: -5
-                
             }
             font {
                 pointSize: 18
                 family: "Arial"
                 bold: true
             }
-            Rectangle { anchors.fill: parent; color: "white"; opacity: 0.2}
         }
-        
+
         Button {
             id: btAddFeed
-            
             label: "add"
+            mouseArea: addFeedMouseArea
             anchors {
                 top: parent.top
                 right: parent.right
             }
+
+            MouseArea {
+                id: addFeedMouseArea
+                anchors.fill: parent
+                onClicked: {
+                    feedModel.append({"url" : feedInput.text})
+                }
+            }
         }
     }
+
     ListView {
         id: feedView
-        
         model: feedModel
         delegate: feedDelegate
         spacing: 5
