@@ -17,7 +17,7 @@ Item {
     /* Canvas to place comics images */
     ComicCanvas {
         id: canvas
-        
+        feed: settings.currentFeed
         opacity: 1
         anchors {
             topMargin: 15
@@ -91,6 +91,10 @@ Item {
             bottom: parent.bottom
             rightMargin: 15
             right: controls.left
+        }
+        
+        onCurrentFeedChanged: {
+            console.debug(settings.currentFeed);
         }
     }
     
