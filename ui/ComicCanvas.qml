@@ -2,13 +2,13 @@ import Qt 4.7
 
 ListView {
     id: comic
-    
+    property alias feed: rssModel.source;
     signal expand;
     
     clip: true
     flickableDirection: Flickable.HorizontalFlick
     orientation: ListView.Horizontal
-    model: RSS2Model {}
+    model: RSS2Model {id: rssModel}
     delegate: ComicDelegate {}
     spacing: 10
 
