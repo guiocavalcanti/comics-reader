@@ -2,6 +2,7 @@ import Qt 4.7
 
 Item {
     id: settings
+    property string currentFeed: feedModel.get(0).url;
     
     Component {
         id: feedDelegate
