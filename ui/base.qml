@@ -92,10 +92,6 @@ Item {
             rightMargin: 15
             right: controls.left
         }
-        
-        onCurrentFeedChanged: {
-            console.debug(settings.currentFeed);
-        }
     }
     
     Image {
