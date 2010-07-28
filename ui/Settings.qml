@@ -7,6 +7,7 @@ Item {
 
     Component {
         id: feedDelegate
+
         Item {
             width: parent.width
             height: 50
@@ -15,7 +16,7 @@ Item {
                 text: url
                 color: "white"
                 anchors {
-                    left: tick.right
+                    left: parent.left
                     leftMargin: 10
                     right: btDelete.left
                     rightMargin: 10
@@ -27,49 +28,6 @@ Item {
                     bold: true
                 }
                 
-            }
-
-            Item {
-                id: tick
-                width: 32; height: 32;
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                    left: parent.left
-                    leftMargin: 10
-                }
-
-                Image {
-                    id: tickImg
-                    property bool ticked: false
-                    
-                    states: [
-                        State {
-                            name: "tick"
-                            when: tickImg.ticked == false
-                            PropertyChanges {
-                                target: tickImg
-                                source: "images/bt-radio-white.png"
-                            }
-                        },
-
-                        State {
-                            name: "untick"
-                            when: tickImg.ticked == true
-                            PropertyChanges {
-                                target: tickImg
-                                source: "images/bt-radio-orange.png"
-                            }
-                        }
-                    ]
-
-                    MouseArea { 
-                        id: tickImgArea
-                        anchors.fill: parent
-                        onClicked: {
-                            tickImg.ticked = (tickImg.ticked) ? false : true
-                        }
-                    }
-                }
             }
 
             Item {
@@ -124,10 +82,6 @@ Item {
         ListElement {
             url: "http://feeds.feedburner.com/JaysHindsight" // TODO this feed has some images which can't be opened due to unsafe connections
         }
-
-        ListElement {
-            url: "http://www.questionablecontent.net/QCRSS.xml" // TODO this feed has more than one image per feed entry and the comic is not the first.
-        }
     }
 
     Text {
@@ -144,6 +98,7 @@ Item {
             pointSize: 20
         }
     }
+
     Item {
         id: feedInput
         property alias text: input.text
@@ -174,6 +129,12 @@ Item {
                 family: "Arial"
                 bold: true
             }
+
+            Rectangle {
+                color: "white"
+                opacity: 0.2
+                anchors.fill: parent
+            }
         }
 
         Button {
@@ -190,7 +151,10 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if(input.acceptableInput){
-                        feedModel.append({"url" : feedInput.text})
+                        feedModel.append({
+                            "url" : feedInput.text, 
+                            "title" : "New Item"
+                        })
                     }
                 }
             }
@@ -202,12 +166,19 @@ Item {
         model: feedModel
         delegate: feedDelegate
         spacing: 5
+        focus: true
         anchors {
             top: feedInput.bottom
             left: parent.left
             bottom: parent.bottom
             bottomMargin: 10
             right: parent.right
+        }
+
+        highlight: Rectangle { 
+            color: "lightsteelblue";
+            width: parent.width
+            opacity: 0.5
         }
     }
     
