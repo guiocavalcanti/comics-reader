@@ -166,6 +166,7 @@ Item {
 
     ListView {
         id: feedView
+        clip: true
         model: feedModel
         delegate: feedDelegate
         spacing: 5
