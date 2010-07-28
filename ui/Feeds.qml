@@ -64,8 +64,8 @@ ListModel {
         doc.open("GET", url)
         doc.send()
     }
-    
-    function addFeed(url) {SQL
+
+    function addFeed(url) {
         var db = openDatabaseSync("feed", "1.0", "Comics Feeds SQL", 1000000, "QSQLITE")
         function _addFeed(feedInfo) {
             var title = feedInfo['title']
