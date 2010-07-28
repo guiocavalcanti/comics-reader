@@ -59,29 +59,32 @@ Item {
             url: "http://henrik.nyh.se/scrapers/cyanide_and_happiness.rss"
         }
         ListElement {
-            url: "http://feeds.feedburner.com/wondermark" // Doing
+            url: "http://feeds.feedburner.com/wondermark"
         }
         ListElement {
-            url: "http://hazsci.thecomicseries.com/rss/" // Ok
+            url: "http://hazsci.thecomicseries.com/rss/"
         }
         ListElement {
-            url: "http://feeds.dilbert.com/DilbertMostPopular?format=xml" // Ok
+            url: "http://feeds.dilbert.com/DilbertMostPopular?format=xml" 
         }
         ListElement {
-            url: "http://www.darthsanddroids.net/rss_noannotation.xml" // Ok
+            url: "http://www.darthsanddroids.net/rss_noannotation.xml"
         }
         ListElement {
-            url: "http://www.irregularwebcomic.net/rss2.xml" // Ok
+            url: "http://www.irregularwebcomic.net/rss2.xml"
         }
         ListElement {
-            url: "http://xkcd.com/rss.xml" // Ok
+            url: "http://xkcd.com/rss.xml"
         }
         ListElement {
             url: "http://tmi-comic.com/feed/" // Ugly
         }
         ListElement {
-            url: "http://feeds.feedburner.com/JaysHindsight" // TODO this feed has some images which can't be opened due to unsafe connections
+            url: "http://feeds.feedburner.com/JaysHindsight" 
+            // TODO this feed has some images which can't be 
+            // opened due to unsafe connections
         }
+
     }
 
     Text {
