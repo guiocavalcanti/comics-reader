@@ -5,8 +5,9 @@ Item{
 
     property string currentImage
     property string currentAlt
-    property int borderSize: 40;
-    signal exitFullscreen;
+    property real scale: 1
+    property int borderSize: 60 * scale
+    signal exitFullscreen
 
     anchors.fill: parent
 
@@ -40,6 +41,8 @@ Item{
             Image {
                 id: image
                 source: currentImage
+                width: sourceSize.width * comicView.scale
+                height: sourceSize.height * comicView.scale
                 MouseArea {
                     id: mouseArea
                     anchors.fill: parent
@@ -70,19 +73,22 @@ Item{
                 anchors.centerIn: parent
                 on: { image.status == XmlListModel.Loading }
             }
-
-            Image {
-                source: "images/expand.png"
-                opacity: 0.3
+            
+            ExpandButton {
+                scale: comicView.scale
+                anchors {
+                    bottom: image.top
+                    right: imageLabel.left
+                }
+                onClicked: { comicView.exitFullscreen() }
+            }
+            ExpandButton {
+                scale: comicView.scale
                 anchors {
                     bottom: imageLabel.bottom
                     left: imageLabel.right
                 }
-                
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: comicView.exitFullscreen()
-                }
+                onClicked: { comicView.exitFullscreen() }
             }
         }
     }

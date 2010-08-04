@@ -8,6 +8,7 @@ Item {
     property string alt: Feed.getAlt(model)
     property string title: model.comicTitle
     property bool isValidComic: image != ""
+    property real scale: 1
     signal expand
 
     width: parent.parent.width
@@ -52,6 +53,7 @@ Item {
     
     ExpandButton {
         id: btExpand
+        scale: delegate.scale
         onClicked: { expand() }
         anchors {
             right: parent.right

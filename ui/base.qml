@@ -6,7 +6,8 @@ Item {
     width: 800; height: 480;
 
     property bool loading: canvas.delegate.status == XmlListModel.Loading
-    property int lastComicId;
+    property int lastComicId
+    property real scale: 1 // Scales items
 
     Image {
         id: background
@@ -30,6 +31,7 @@ Item {
     /* Canvas to place comics images */
     ComicCanvas {
         id: canvas
+        scale: window.scale
         feed: settings.currentFeed
         opacity: 1
         anchors {
@@ -52,7 +54,7 @@ Item {
 
     ComicView {
         id: fullscreen
-
+        scale: window.scale
         opacity: 0
         onExitFullscreen: { window.state = "normalView" }
     }

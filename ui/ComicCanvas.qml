@@ -2,15 +2,17 @@ import Qt 4.7
 
 ListView {
     id: comic
-    property alias feed: rssModel.source;
-    signal fullscreen;
+    property alias feed: rssModel.source
+    property real scale: 1
+    signal fullscreen
 
     clip: true
     flickableDirection: Flickable.HorizontalFlick
     snapMode: ListView.SnapToItem
     orientation: ListView.Horizontal
     model: RSS2Model {id: rssModel}
-    delegate: ComicDelegate { 
+    delegate: ComicDelegate {
+        scale: comic.scale
         onExpand: {
             comic.currentIndex = index
             fullscreen(index)
