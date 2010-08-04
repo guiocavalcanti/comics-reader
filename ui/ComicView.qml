@@ -6,17 +6,15 @@ Item{
     property string currentImage
     property string currentAlt
     property int borderSize: 40;
-    signal doubleClicked;
+    signal exitFullscreen;
 
     anchors.fill: parent
 
     Rectangle {
         id: blackout
-
         color: "black"
         anchors.fill: parent
     }
-
     Flickable {
         anchors.fill: parent
         contentWidth: container.width
@@ -24,7 +22,6 @@ Item{
 
         Item {
             id: container
-
             width: image.width + borderSize * 2
             height: image.height + imageLabel.height + borderSize * 2
             x: {
@@ -43,6 +40,11 @@ Item{
             Image {
                 id: image
                 source: currentImage
+                MouseArea {
+                    id: mouseArea
+                    anchors.fill: parent
+                    onDoubleClicked: { comicView.exitFullscreen() }
+                }
             }
 
             Text {
@@ -64,18 +66,23 @@ Item{
                 }
             }
 
-            MouseArea {
-                id: mouseArea
-                
-                anchors.fill: parent
-                onDoubleClicked: {
-                    comicView.doubleClicked();
-                }
-            }
-
             BusyIndicator {
                 anchors.centerIn: parent
                 on: { image.status == XmlListModel.Loading }
+            }
+
+            Image {
+                source: "images/expand.png"
+                opacity: 0.3
+                anchors {
+                    bottom: imageLabel.bottom
+                    left: imageLabel.right
+                }
+                
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: comicView.exitFullscreen()
+                }
             }
         }
     }

@@ -54,9 +54,7 @@ Item {
         id: fullscreen
 
         opacity: 0
-        onDoubleClicked: {
-            window.state = "normalView"
-        }
+        onExitFullscreen: { window.state = "normalView" }
     }
 
     Settings {

@@ -49,26 +49,15 @@ Item {
             topMargin: 30
         }
     }
-
-    Image {
+    
+    ExpandButton {
         id: btExpand
-
-        source: "images/expand.png"
-        width: (isValidComic) ? 32 : 0; height: 31;
+        onClicked: { expand() }
         anchors {
             right: parent.right
             rightMargin: 20
             bottom: parent.bottom
             bottomMargin: 20
-        }
-
-        MouseArea {
-            id: expandMouseArea
-            anchors.fill: parent
-
-            onClicked: {
-                expand()
-            }
         }
     }
 }
