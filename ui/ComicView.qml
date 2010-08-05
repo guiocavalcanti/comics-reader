@@ -64,7 +64,7 @@ Item{
                 }
                 font {
                     family: "Arial"
-                    pointSize: 12
+                    pointSize: 12 * comicView.scale
                     bold: true
                 }
             }

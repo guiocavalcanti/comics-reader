@@ -7,7 +7,7 @@ Item {
 
     property bool loading: canvas.delegate.status == XmlListModel.Loading
     property int lastComicId
-    property real scale: 1 // Scales items
+    property real scale: 2 // Scales items
 
     Image {
         id: background
@@ -50,6 +50,7 @@ Item {
             fullscreen.currentAlt = canvas.currentItem.alt
             window.state = "fullscreen"
         }
+        onCurrentIndexChanged: { console.log(canvas.currentIndex) }
     }
 
     ComicView {
@@ -120,6 +121,7 @@ Item {
             id: btLeft
 
             anchors.horizontalCenter: parent.horizontalCenter
+            enabled: !canvas.firstComic
             iconPressed: "images/left.png"
             iconUnpressed: "images/left.png"
             onClicked: { canvas.decrementCurrentIndex() }
@@ -129,6 +131,7 @@ Item {
             id: btRight
 
             anchors.horizontalCenter: parent.horizontalCenter
+            enabled: !canvas.lastComic
             iconPressed: "images/right.png"
             iconUnpressed: "images/right.png"
             onClicked: { canvas.incrementCurrentIndex() }
