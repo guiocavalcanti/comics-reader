@@ -3,6 +3,8 @@ import "feed.js" as Feed
 
 Item {
     id: delegate
+    width: parent.parent.width
+    height: parent.parent.height
 
     property string image: Feed.getImage(model)
     property string alt: Feed.getAlt(model)
@@ -11,13 +13,9 @@ Item {
     property real scale: 1
     signal expand
 
-    width: parent.parent.width
-    height: parent.parent.height
-
     Text {
         id: title
         text: (isValidComic) ? comicTitle : ""
-
         anchors {
             left: parent.left
         }
@@ -31,30 +29,37 @@ Item {
         }
     }
 
-    Image {
-        id: strip
-
-        fillMode: Image.PreserveAspectFit
-        source: image
-        width: Math.min(strip.sourceSize.width, delegate.width)
-        height: Math.min(strip.sourceSize.height, delegate.height - title.height - 20)
-
+    Item {
         anchors {
             top: title.bottom
-            left: parent.left
+            left: delegate.left
+            right: delegate.right
+            bottom: delegate.bottom
             topMargin: 20
         }
-        
-        MouseArea {
-            anchors.fill: parent
-            onDoubleClicked: { expand() }
+        Image {
+            id: strip
+            fillMode: Image.PreserveAspectFit
+            source: image
+            width: Math.min(strip.sourceSize.width, delegate.width)
+            height: Math.min(strip.sourceSize.height, delegate.height - title.height - 20)
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: parent.left
+            }
+            MouseArea {
+                anchors.fill: parent
+                onDoubleClicked:
+                    expand()
+            }
         }
     }
-    
+
     ExpandButton {
         id: btExpand
         scale: delegate.scale
-        onClicked: { expand() }
+        onClicked:
+            expand()
         anchors {
             right: parent.right
             rightMargin: 20

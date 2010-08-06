@@ -26,13 +26,13 @@ Item{
             width: image.width + borderSize * 2
             height: image.height + imageLabel.height + borderSize * 2
             x: {
-                if ( comicView.width > image.width)
+                if ( comicView.width > image.width + borderSize)
                     return (comicView.width - container.width)/2 + borderSize
                 else
                     return borderSize
             }
             y: {
-                if ( comicView.height > image.height)
+                if ( comicView.height > image.height + borderSize)
                     return (comicView.height - container.height)/2 + borderSize
                 else
                     return borderSize

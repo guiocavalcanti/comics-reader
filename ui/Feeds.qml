@@ -12,7 +12,7 @@ ListModel {
             tx.executeSql("CREATE TABLE IF NOT EXISTS Feeds(url STRING PRIMARY KEY, title STRING, description STRING)")
             tx.executeSql("INSERT OR IGNORE INTO Feeds (url, title, description) \
                 VALUES ('http://xkcd.com/rss.xml','xkcd.com','xkcd.com: A webcomic of romance and math humor.')");
-            var resultSet = tx.executeSql("SELECT url, title, description FROM Feeds ORDER BY title");
+            var resultSet = tx.executeSql("SELECT url, title, description FROM Feeds");
             for(var i = 0; i < resultSet.rows.length; i++){
                 var result = resultSet.rows.item(i)
                 var url = result.url;

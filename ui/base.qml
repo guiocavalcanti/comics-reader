@@ -53,7 +53,7 @@ Item {
             }
         }
 
-        Button { // Works only with XKCD feed
+        Button {
             id: btRandom
 
             anchors.horizontalCenter: parent.horizontalCenter
