@@ -13,10 +13,6 @@ Item {
 
     width: parent.parent.width
     height: parent.parent.height
-    anchors {
-        top: parent.top
-        bottom: parent.bottom
-    }
 
     Text {
         id: title
@@ -40,14 +36,18 @@ Item {
 
         fillMode: Image.PreserveAspectFit
         source: image
-        width: Math.min(strip.sourceSize.width, parent.width)
+        width: Math.min(strip.sourceSize.width, delegate.width)
+        height: Math.min(strip.sourceSize.height, delegate.height - title.height - 20)
 
         anchors {
             top: title.bottom
             left: parent.left
-            bottom: parent.bottom
-            bottomMargin: 15
-            topMargin: 30
+            topMargin: 20
+        }
+        
+        MouseArea {
+            anchors.fill: parent
+            onDoubleClicked: { expand() }
         }
     }
     

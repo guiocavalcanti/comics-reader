@@ -27,55 +27,7 @@ Item {
             topMargin: 15
         }
     }
-
-    /* Canvas to place comics images */
-    ComicCanvas {
-        id: canvas
-        scale: window.scale
-        feed: settings.currentFeed
-        opacity: 1
-        anchors {
-            topMargin: 15
-            top: parent.top
-            leftMargin: 15
-            left: parent.left
-            bottomMargin: 20
-            bottom: parent.bottom
-            rightMargin: 15
-            right: controls.left
-        }
-
-        onFullscreen: {
-            fullscreen.currentImage = canvas.currentItem.image
-            fullscreen.currentAlt = canvas.currentItem.alt
-            window.state = "fullscreen"
-        }
-        onCurrentIndexChanged: { console.log(canvas.currentIndex) }
-    }
-
-    ComicView {
-        id: fullscreen
-        scale: window.scale
-        opacity: 0
-        onExitFullscreen: { window.state = "normalView" }
-    }
-
-    Settings {
-        id: settings
-
-        opacity: 0
-        anchors {
-            topMargin: 15
-            top: parent.top
-            leftMargin: 15
-            left: parent.left
-            bottomMargin: 20
-            bottom: parent.bottom
-            rightMargin: 15
-            right: controls.left
-        }
-    }
-
+    
     Column {
         id: controls
 
@@ -109,11 +61,16 @@ Item {
             iconUnpressed: "images/random.png"
 
             onClicked: {
+                /*
                 Feed.randomXkcdFeed(function (src, alt) {
                     fullscreen.currentImage = src
                     fullscreen.currentAlt = alt
                     window.state = "fullscreen"
                 })
+                */
+                canvas.highlightMoveDuration = 1
+                canvas.currentIndex = Math.floor(Math.random() * canvas.count)
+                canvas.highlightMoveDuration = -1
             }
         }
 
@@ -135,6 +92,53 @@ Item {
             iconPressed: "images/right.png"
             iconUnpressed: "images/right.png"
             onClicked: { canvas.incrementCurrentIndex() }
+        }
+    }
+
+    /* Canvas to place comics images */
+    ComicCanvas {
+        id: canvas
+        scale: window.scale
+        feed: settings.currentFeed
+        opacity: 1
+        anchors {
+            topMargin: 15
+            top: parent.top
+            leftMargin: 15
+            left: parent.left
+            bottomMargin: 20
+            bottom: parent.bottom
+            rightMargin: 15
+            right: controls.left
+        }
+
+        onFullscreen: {
+            fullscreen.currentImage = canvas.currentItem.image
+            fullscreen.currentAlt = canvas.currentItem.alt
+            window.state = "fullscreen"
+        }
+    }
+
+    ComicView {
+        id: fullscreen
+        scale: window.scale
+        opacity: 0
+        onExitFullscreen: { window.state = "normalView" }
+    }
+
+    Settings {
+        id: settings
+
+        opacity: 0
+        anchors {
+            topMargin: 15
+            top: parent.top
+            leftMargin: 15
+            left: parent.left
+            bottomMargin: 20
+            bottom: parent.bottom
+            rightMargin: 15
+            right: controls.left
         }
     }
 

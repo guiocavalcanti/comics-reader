@@ -69,6 +69,7 @@ Item {
             onClicked: {
                 if(input.acceptableInput) {
                     persistentFeed.addFeed(feedInput.text)
+                    input.text = ""
                 }
             }
         }

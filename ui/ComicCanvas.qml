@@ -1,5 +1,5 @@
 import Qt 4.7
-
+import "feed.js" as Feed
 ListView {
     id: comic
     property alias feed: rssModel.source
@@ -13,13 +13,19 @@ ListView {
     snapMode: ListView.SnapToItem
     orientation: ListView.Horizontal
     model: RSS2Model {id: rssModel}
+    /*
+    delegate: Image {
+        source: Feed.getImage(model)
+    }
+    //*/
+    ///*
     delegate: ComicDelegate {
         scale: comic.scale
         onExpand: {
             comic.currentIndex = index
             fullscreen(index)
         }
-    }
+    }//*/
     spacing: 10
 
     BusyIndicator {
