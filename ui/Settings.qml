@@ -19,6 +19,12 @@ Item {
             pointSize: 20
         }
     }
+    
+    Feeds {
+        id: feedModel
+        onInvalidFeed:
+            input.text = url
+    }
 
     Item {
         id: feedInput
@@ -37,7 +43,6 @@ Item {
         TextInput {
             id: input
             color: "white"
-            validator: RegExpValidator { regExp: /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/ }
             anchors {
                 left: parent.left
                 right: btAddFeed.left
@@ -50,7 +55,6 @@ Item {
                 family: "Arial"
                 bold: true
             }
-
             Rectangle {
                 color: "white"
                 opacity: 0.2
@@ -61,16 +65,15 @@ Item {
         Button {
             id: btAddFeed
             label: "add"
+            enabled: input.text.match(/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/) != null
             anchors {
                 top: parent.top
                 right: parent.right
             }
 
             onClicked: {
-                if(input.acceptableInput) {
-                    persistentFeed.addFeed(feedInput.text)
-                    input.text = ""
-                }
+                feedModel.addFeed(feedInput.text)
+                input.text = ""
             }
         }
     }
@@ -78,15 +81,12 @@ Item {
     ListView {
         id: feedView
         clip: true
-        model: Feeds { id: persistentFeed }
+        model: feedModel
         delegate: FeedDelegate {
-            id: feedDelegate
-            onDeletedFeed: {
-                persistentFeed.deleteFeed(index)
-            }
-            onSelectedFeed: {
+            onDeletedFeed:
+                feedModel.deleteFeed(index)
+            onSelectedFeed:
                 feedView.currentIndex = index
-            }
         }
         spacing: 5
         focus: true
@@ -105,7 +105,7 @@ Item {
         }
         onCurrentItemChanged: {
             var index = feedView.currentIndex
-            settings.currentFeed = persistentFeed.get(index).url
+            settings.currentFeed = feedModel.get(index).url
         }
     }
     

@@ -15,23 +15,24 @@ Item {
     Image {
         id: background
 
-        property alias pressed: button.pressed
-        property alias enabled: button.enabled
-
         source: "images/bt-normal.png"
 
         states: [
             State {
                 name: "disabled"
-                when: enabled == false
+                when: button.enabled == false
                 PropertyChanges {
                     target: icon
+                    opacity: 0.3
+                }
+                PropertyChanges {
+                    target: label
                     opacity: 0.3
                 }
             },
             State {
                 name: "unpressed"
-                when: pressed == false
+                when: button.pressed == false
                 PropertyChanges {
                     target: background
                     source: "images/bt-normal.png" 
@@ -39,7 +40,7 @@ Item {
             },
             State {
                 name: "pressed"
-                when: pressed == true
+                when: button.pressed == true
                 PropertyChanges {
                     target: background
                     source: "images/bt-pressed.png" 
@@ -69,6 +70,7 @@ Item {
     MouseArea {
         id: mouseArea
         anchors.fill: parent
-        onClicked: { button.clicked() }
+        onClicked:
+            button.clicked()
     }
 }

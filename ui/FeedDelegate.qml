@@ -29,27 +29,21 @@ Item {
         }
     }
 
-    Item {
+    Image {
         id: button
         signal deletedFeed
-        
-        width: 32; height: 32;
+        source: "images/bt-trash.png"
+        width: 32; height: 32
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
             rightMargin: 10
         }
-
-        Image {
-            id: trashImg
-            source: "images/bt-trash.png"
-        }
         
         MouseArea {
             anchors.fill: parent
-            onClicked: {
+            onClicked:
                 deletedFeed(index)
-            }
         }
     }
 
