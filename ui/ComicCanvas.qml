@@ -15,7 +15,6 @@ ListView {
     property bool lastComic: comic.currentIndex >= comic.count - 1
     signal fullscreen
 
-
     model: RSS2Model {id: rssModel}
     delegate: ComicDelegate {
         scale: comic.scale
