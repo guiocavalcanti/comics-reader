@@ -1,4 +1,4 @@
-
+/*
 function randomXkcdFeed(onShowComic) {
     var doc = new XMLHttpRequest(); // not the best solution
     doc.onreadystatechange = function() {
@@ -12,7 +12,8 @@ function randomXkcdFeed(onShowComic) {
     doc.open("GET", "http://xkcd.com/rss.xml")
     doc.send()
 }
-
+*/
+/*
 function fetchRandomXkcdFeed(lastComicId, onShowComic) {
     var comicId = Math.floor(Math.random() * lastComicId) + 1
     var doc = new XMLHttpRequest();
@@ -42,11 +43,14 @@ function fetchRandomXkcdFeed(lastComicId, onShowComic) {
     doc.open("GET", "http://xkcd.com/" + comicId + "/")
     doc.send()
 }
+*/
 
 function getImage(model) {
     if (model == undefined)
         return ""
-    var src = model.comicContent.match(/<img(.*) src="([\w\d:#@%/;$()~_?\+-=\\\.& ]*)"/i)
+    var src = model.comicContent.match(
+        /<img(.*) src="([\w\d:#@%/;$()~_?\+-=\\\.& ]*)"/i)
+        
     if (src != null) {
         return src[2]
     } else {

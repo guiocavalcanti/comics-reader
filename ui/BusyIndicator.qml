@@ -7,11 +7,11 @@ Image {
 
     source: "images/busy.png"
     visible: indicator.on
-    width: 40; height: 40;
+    width: 40; height: 40
 
     NumberAnimation on rotation {
         running: indicator.on
-        from: 0; to: 360;
+        from: 0; to: 360
         loops: Animation.Infinite
         duration: 1200
     }

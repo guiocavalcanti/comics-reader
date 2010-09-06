@@ -3,7 +3,7 @@ import Qt 4.7
 Item {
     id: settings
 
-    property string currentFeed: feedModel.get(0).url;
+    property string currentFeed: feedModel.get(0).url
 
     Text {
         id: title
@@ -98,7 +98,7 @@ Item {
             right: parent.right
         }
         highlightFollowsCurrentItem: true
-        highlight: Rectangle { 
+        highlight: Rectangle {
             color: "lightsteelblue";
             width: parent.width
             opacity: 0.3
@@ -108,5 +108,4 @@ Item {
             settings.currentFeed = feedModel.get(index).url
         }
     }
-    
 }

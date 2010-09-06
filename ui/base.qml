@@ -3,7 +3,7 @@ import "feed.js" as Feed
 
 Item {
     id: window
-    width: 800; height: 480;
+    width: 800; height: 480
 
     property bool loading: canvas.delegate.status == XmlListModel.Loading
     property int lastComicId
@@ -61,7 +61,7 @@ Item {
             iconUnpressed: "images/random.png"
 
             onClicked: {
-                /*
+                /* Real random xkcd feed
                 Feed.randomXkcdFeed(function (src, alt) {
                     fullscreen.currentImage = src
                     fullscreen.currentAlt = alt
@@ -69,7 +69,8 @@ Item {
                 })
                 */
                 canvas.highlightMoveDuration = 1
-                canvas.currentIndex = Math.floor(Math.random() * canvas.count)
+                canvas.currentIndex = Math.floor(
+                    Math.random() * canvas.count)
                 canvas.highlightMoveDuration = -1
             }
         }
@@ -119,7 +120,7 @@ Item {
         }
     }
 
-    ComicView {
+    FullscreenView {
         id: fullscreen
         scale: window.scale
         opacity: 0

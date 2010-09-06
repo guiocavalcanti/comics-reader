@@ -58,7 +58,7 @@ Item {
 
     BusyIndicator {
         anchors.centerIn: parent
-        on: { strip.status != Image.Ready }
+        on: strip.status != Image.Ready
     }
 
     ExpandButton {

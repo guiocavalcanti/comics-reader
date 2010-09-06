@@ -1,5 +1,6 @@
 import Qt 4.7
 import "feed.js" as Feed
+
 ListView {
     id: comic
     spacing: 10
@@ -16,7 +17,7 @@ ListView {
     property bool lastComic: comic.currentIndex >= comic.count - 1
     signal fullscreen
 
-    model: RSS2Model {id: rssModel}
+    model: ComicFeedModel {id: rssModel}
     delegate: ComicDelegate {
         scale: comic.scale
         onExpand: {
