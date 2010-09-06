@@ -4,6 +4,7 @@ ListView {
     id: comic
     spacing: 10
     highlightMoveSpeed: 1200
+    highlightRangeMode: ListView.StrictlyEnforceRange
     clip: true
     flickableDirection: Flickable.HorizontalFlick
     snapMode: ListView.SnapToItem
