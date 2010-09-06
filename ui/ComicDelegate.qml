@@ -42,7 +42,8 @@ Item {
             fillMode: Image.PreserveAspectFit
             source: image
             width: Math.min(strip.sourceSize.width, delegate.width)
-            height: Math.min(strip.sourceSize.height, delegate.height - title.height - 20)
+            height: Math.min(strip.sourceSize.height,
+                delegate.height - title.height - 20)
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: parent.left
@@ -53,6 +54,11 @@ Item {
                     expand()
             }
         }
+    }
+
+    BusyIndicator {
+        anchors.centerIn: parent
+        on: { strip.status != Image.Ready }
     }
 
     ExpandButton {
