@@ -1,0 +1,12 @@
+Package: comicsreader
+Version: 0.1.0-1
+Architecture: any
+Mantainer: Daker Fernandes <daker.pinheiro@openbossa.org>
+Depends: qt4-maemo5-declarative-qmlviewer
+Section: user/multimedia
+Priority: optional
+Description: A feed viewer of web comics strips.
+ With the fullscreen mode you can zoom the comic.
+ You can also add any web comic feed you like.
+Bugtracker: https://garage.maemo.org/tracker/?atid=6294&group_id=1803&func=browse
+Maemo-Display-Name: Comics Reader

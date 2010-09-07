@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# run qml app with qml viewer
+/opt/qt4../qmlviewer baseN900.qml
