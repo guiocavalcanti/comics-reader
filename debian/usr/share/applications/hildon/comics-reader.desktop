@@ -4,4 +4,4 @@ Version=0.6.1
 Type=Application
 Name=ComicsReader
 Exec=/usr/bin/comics-reader
-Icon=comicsreader
+Icon=comics-reader
