@@ -1,7 +1,7 @@
 Package: comicsreader
 Version: 0.1.0-1
 Architecture: any
-Mantainer: Daker Fernandes <daker.pinheiro@openbossa.org>
+Maintainer: Daker Fernandes <daker.pinheiro@openbossa.org>
 Depends: qt4-maemo5-declarative-qmlviewer
 Section: user/multimedia
 Priority: optional
