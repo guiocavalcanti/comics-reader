@@ -1,8 +1,8 @@
-Package: comicsreader
-Version: 0.1.0-1
-Architecture: any
+Package: comics-reader
+Version: 1.0.0-0
+Architecture: i386
 Maintainer: Daker Fernandes <daker.pinheiro@openbossa.org>
-Depends: qt4-maemo5-declarative-qmlviewer
+Depends: qt4-experimental-declarative-qmlviewer
 Section: user/multimedia
 Priority: optional
 Description: A feed viewer of web comics strips.

@@ -5,3 +5,4 @@ Type=Application
 Name=ComicsReader
 Exec=/usr/bin/comics-reader
 Icon=comics-reader
+X-Window-Icon=comics-reader

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # run qml app with qml viewer
-/opt/qt4../qmlviewer baseN900.qml
+/opt/qt4-maemo5/bin/qmlviewer /opt/comics-reader/ui/baseN900.qml

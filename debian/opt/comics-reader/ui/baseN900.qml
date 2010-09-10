@@ -120,7 +120,7 @@ Item {
         }
     }
 
-    FullscreenView {
+    FullscreenView2 { // FullscreenView {
         id: fullscreen
         scale: window.scale
         opacity: 0
