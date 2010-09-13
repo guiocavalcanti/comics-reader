@@ -1,6 +1,6 @@
 Package: comics-reader
 Version: 1.0.0-0
-Architecture: i386
+Architecture: armel
 Maintainer: Daker Fernandes <daker.pinheiro@openbossa.org>
 Depends: qt4-experimental-declarative-qmlviewer
 Section: user/multimedia
