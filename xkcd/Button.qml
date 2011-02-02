@@ -5,6 +5,7 @@ Image {
     id: button
 
     property alias icon: buttonIcon.source
+    property alias pressed: mouse.pressed
 
     signal clicked()
 

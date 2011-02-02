@@ -91,6 +91,13 @@ Rectangle {
         onClicked: { comicsList.positionViewAtIndex(Math.random() * xkcdModel.count, ListView.Center) }
     }
 
+    Image {
+        anchors.bottom: randomButton.top
+        anchors.left: randomButton.bottom
+        source: "images/random_number.png"
+        visible: randomButton.pressed
+    }
+
     Button {
         id: exitButton
         anchors {
